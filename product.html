@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>สินค้า | Aura Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .pd-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      padding: 40px 0 80px;
+    }
+    .pd-gallery {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid rgba(192,192,192,0.25);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      position: sticky;
+      top: 100px;
+    }
+    .pd-gallery img {
+      max-width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+    }
+    .pd-info .pd-cat {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--silver-dark);
+      background: var(--off-white);
+      border: 1px solid var(--silver-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .pd-info h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 12px;
+      color: #2a2a2a;
+    }
+    .pd-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .pd-desc {
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+    .pd-details {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .pd-details li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(192,192,192,0.25);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .pd-details li::before {
+      content: '✦';
+      color: var(--silver-dark);
+      flex-shrink: 0;
+    }
+    .pd-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .pd-actions .btn-cart {
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+    .pd-actions .btn-inquire {
+      padding: 14px 24px;
+      font-size: 15px;
+    }
+    .pd-channels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pd-channels a {
+      padding: 10px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+    }
+    .pd-channels .line-btn { background: #06C755; }
+    .pd-channels .shopee-btn { background: #ee4d2d; }
+    .pd-channels .lazada-btn { background: #0f146d; }
+    .pd-related {
+      padding: 60px 0 80px;
+      background: var(--cream);
+    }
+    .pd-related h2 {
+      text-align: center;
+      margin-bottom: 36px;
+      font-size: 1.6rem;
+    }
+    .pd-not-found {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    @media (max-width: 768px) {
+      .pd-layout { grid-template-columns: 1fr; gap: 24px; }
+      .pd-gallery { position: static; min-height: 280px; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="image/logo.png" alt="Aura Beauty" class="logo-img" />
+        <div class="logo-text">
+          <strong>AURA BEAUTY</strong>
+          <span>ออร่า บิวตี้</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <span class="nav-indicator" id="navIndicator"></span>
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="about.html" data-i18n="nav_about">เกี่ยวกับเรา</a></li>
+        <li><a href="products.html" class="active" data-i18n="nav_products">สินค้า</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">บทความ</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">ติดต่อเรา</a></li>
+      </ul>
+<a href="cart.html" class="cart-link" title="Cart">🛒<span class="cart-badge">0</span></a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav_inquiry">สอบถามสินค้า</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="เมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="productDetail">
+    <!-- filled by JS -->
+  </div>
+
+  <section class="pd-related" id="relatedSection" style="display:none;">
+    <div class="container">
+      <h2>สินค้าที่เกี่ยวข้อง</h2>
+      <div class="product-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:0;">
+        <p data-i18n="footer_rights">© 2026 บริษัท ออร่า บิวตี้ จำกัด สงวนลิขสิทธิ์</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="products-data.js"></script>
+  <script src="i18n.js"></script>
+  <script src="stock.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function getLang() {
+      return localStorage.getItem('aura_lang') || 'th';
+    }
+
+    function renderProduct() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const p = PRODUCTS[id];
+      const box = document.getElementById('productDetail');
+      const lang = getLang();
+
+      if (!p) {
+        box.innerHTML = `
+          <div class="container pd-not-found">
+            <h1>ไม่พบสินค้า</h1>
+            <p style="color:var(--text-muted);margin:12px 0 24px;">สินค้าที่คุณค้นหาอาจถูกลบหรือลิงก์ไม่ถูกต้อง</p>
+            <a href="products.html" class="btn btn-primary">กลับไปหน้ารายการสินค้า</a>
+          </div>`;
+        return;
+      }
+
+      const name = lang === 'en' ? p.name_en : p.name_th;
+      const desc = lang === 'en' ? p.desc_en : p.desc_th;
+      const details = lang === 'en' ? p.details_en : p.details_th;
+      const catLabel = CAT_LABELS[p.cat] ? CAT_LABELS[p.cat][lang] : p.cat;
+
+      document.title = name + ' | Aura Beauty';
+
+      box.innerHTML = `
+        <section class="page-hero" style="padding-bottom:20px;">
+          <div class="container">
+            <div class="label"><a href="products.html" style="color:inherit;">สินค้า</a> / ${catLabel}</div>
+          </div>
+        </section>
+        <div class="container">
+          <div class="pd-layout">
+            <div class="pd-gallery">
+              <img src="${p.image}" alt="${name}" />
+            </div>
+            <div class="pd-info">
+              <span class="pd-cat">${catLabel}</span>
+              ${p.badge ? `<span class="product-badge" style="position:static;margin-left:8px;">${p.badge}</span>` : ''}
+              <h1>${name}</h1>
+              <div class="pd-price">฿${p.price.toLocaleString()}</div>
+              <div class="pd-stock" id="pdStock"></div>
+              <p class="pd-desc">${desc}</p>
+              <ul class="pd-details">
+                ${details.map(d => `<li>${d}</li>`).join('')}
+              </ul>
+              <div class="pd-actions">
+                <button type="button" class="btn-cart" onclick="addToCart({id:'${p.id}',name:'${p.name_th.replace(/'/g, "\\'")}',price:${p.price},image:'${p.image}'})">
+                  ${lang === 'en' ? 'Add to Cart' : 'ใส่ตะกร้า'}
+                </button>
+                <a href="contact.html" class="btn-inquire">${lang === 'en' ? 'Inquire' : 'สอบถาม'}</a>
+              </div>
+              <div class="pd-channels">
+                <a href="https://line.me/R/ti/p/@aurabeauty" target="_blank" rel="noopener" class="line-btn">Line OA</a>
+                <a href="https://shopee.co.th/" target="_blank" rel="noopener" class="shopee-btn">Shopee</a>
+                <a href="https://www.lazada.co.th/" target="_blank" rel="noopener" class="lazada-btn">Lazada</a>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+      // Stock display
+      if (typeof getStock === 'function') {
+        const qty = getStock(p.id);
+        const info = stockLabel(qty);
+        const el = document.getElementById('pdStock');
+        if (el) {
+          el.innerHTML = '<span class="stock-badge ' + info.cls + '">' + info.text + '</span>';
+        }
+        const cartBtn = box.querySelector('.btn-cart');
+        if (cartBtn && qty <= 0) {
+          cartBtn.disabled = true;
+          cartBtn.textContent = lang === 'en' ? 'Out of Stock' : 'หมดสต็อก';
+          cartBtn.style.opacity = '0.5';
+          cartBtn.onclick = null;
+        }
+      }
+
+      // Related products same category
+      const related = Object.values(PRODUCTS).filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 4);
+      if (related.length) {
+        document.getElementById('relatedSection').style.display = 'block';
+        document.getElementById('relatedGrid').innerHTML = related.map(r => {
+          const rn = lang === 'en' ? r.name_en : r.name_th;
+          return `
+            <article class="product-card">
+              <a href="product.html?id=${r.id}" style="display:block;">
+                <div class="product-img">
+                  <img src="${r.image}" alt="${rn}" />
+                </div>
+              </a>
+              <div class="product-body">
+                <h3 style="font-size:1.05rem;"><a href="product.html?id=${r.id}">${rn}</a></h3>
+                <div class="product-meta">
+                  <span class="product-price">฿${r.price.toLocaleString()}</span>
+                  <a href="product.html?id=${r.id}" class="product-link">${lang === 'en' ? 'View' : 'ดูรายละเอียด'} →</a>
+                </div>
+              </div>
+            </article>`;
+        }).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderProduct);
+    // Re-render when language changes
+    const _setLang = window.setLang;
+    window.setLang = function(lang) {
+      _setLang(lang);
+      renderProduct();
+    };
+  </script>
+</body>
+</html>

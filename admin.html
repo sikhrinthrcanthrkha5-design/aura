@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Aura Beauty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f2ef;
+      --card: #fff;
+      --border: #e4e2de;
+      --text: #2c2c2c;
+      --muted: #6a6a6a;
+      --accent: #a8a6a2;
+      --silver: #c0c0c0;
+      --ok: #2e7d32;
+      --warn: #e65100;
+      --danger: #c62828;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans Thai', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* Login */
+    .login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .login-box {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .login-box img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+    .login-box h1 { font-size: 1.4rem; margin-bottom: 4px; }
+    .login-box .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+    .login-box input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .login-box input:focus { border-color: var(--accent); }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #d0ceca, #9a9894);
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .login-box button:hover { opacity: 0.92; }
+    .login-error {
+      color: var(--danger);
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+    }
+    .login-hint {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* Admin shell */
+    .admin { display: none; min-height: 100vh; }
+    .admin-sidebar {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: 240px;
+      background: #2c2c2c;
+      color: #ddd;
+      padding: 24px 0;
+      z-index: 100;
+    }
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 20px 24px;
+      border-bottom: 1px solid #444;
+      margin-bottom: 16px;
+    }
+    .admin-brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .admin-brand strong {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+    }
+    .admin-brand span { font-size: 11px; color: #999; }
+    .admin-nav a {
+      display: block;
+      padding: 12px 24px;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+    .admin-nav a:hover, .admin-nav a.active {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+      border-left-color: var(--silver);
+    }
+    .admin-main {
+      margin-left: 240px;
+      padding: 28px 32px;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .admin-header h1 { font-size: 1.5rem; }
+    .btn-sm {
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-sm:hover { background: #f5f3ef; }
+    .btn-sm.primary {
+      background: linear-gradient(135deg, #d0ceca, #9a9894);
+      color: #fff;
+      border: none;
+    }
+    .btn-sm.danger { color: var(--danger); border-color: #ef9a9a; }
+    .btn-sm.ok { color: var(--ok); border-color: #a5d6a7; }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .stat-card .label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .stat-card .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #333;
+    }
+    .stat-card .sub { font-size: 12px; color: #999; margin-top: 4px; }
+
+    /* Panel */
+    .panel {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .panel-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .panel-head h2 { font-size: 1.1rem; }
+    .panel-body { padding: 0; }
+
+    table.admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    table.admin-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: #faf9f7;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.admin-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #f0eeea;
+      vertical-align: middle;
+    }
+    table.admin-table tr:hover td { background: #faf9f7; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-paid { background: #e8f5e9; color: var(--ok); }
+    .badge-cod { background: #fff3e0; color: var(--warn); }
+    .badge-done { background: #e3f2fd; color: #1565c0; }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--muted);
+    }
+
+    /* Order detail modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .modal h2 { margin-bottom: 16px; font-size: 1.25rem; }
+    .modal .meta { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .modal .meta strong { color: var(--text); }
+    .modal table { width: 100%; font-size: 13px; margin: 12px 0; border-collapse: collapse; }
+    .modal table td, .modal table th {
+      padding: 8px 6px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    .modal .total {
+      text-align: right;
+      font-size: 1.1rem;
+      margin-top: 12px;
+      font-family: 'Playfair Display', serif;
+    }
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .product-thumb {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      background: #f8f7f5;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .admin-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 12px 0;
+      }
+      .admin-main { margin-left: 0; padding: 16px; }
+      .admin-nav { display: flex; overflow-x: auto; }
+      .admin-nav a { border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+      .admin-nav a.active { border-bottom-color: var(--silver); }
+    }
+
+    /* ===== Modern Dashboard (Quixotic-inspired) ===== */
+    .admin-main {
+      background: #f0eeea;
+    }
+    .dash-welcome {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .dash-welcome h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .dash-welcome .hello {
+      color: #888;
+      font-size: 0.95rem;
+      margin-top: 4px;
+      font-family: 'Noto Sans Thai', sans-serif;
+    }
+    .dash-welcome-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .date-pill {
+      background: #fff;
+      border: 1px solid #e4e2de;
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #555;
+    }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .dash-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 22px 24px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      position: relative;
+    }
+    .dash-card .card-label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+    .dash-card .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    .dash-card-hero {
+      background: linear-gradient(145deg, #5c5c5c 0%, #3a3a3a 100%);
+      color: #fff;
+      border: none;
+    }
+    .dash-card-hero .card-label { color: rgba(255,255,255,0.7); }
+    .dash-card-hero .card-title { color: #fff; }
+    .hero-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 12px 0 8px;
+      letter-spacing: -0.02em;
+    }
+    .hero-meta {
+      font-size: 12px;
+      opacity: 0.75;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .chip {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .chip-up { background: #e8f5e9; color: #2e7d32; }
+    .chip-warn { background: #fff3e0; color: #e65100; }
+    .chip-neutral { background: #f5f5f5; color: #666; }
+    .dash-card-hero .chip-up {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    /* Mini chart bars */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 140px;
+      padding-top: 8px;
+    }
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    .bar {
+      width: 100%;
+      max-width: 36px;
+      border-radius: 10px 10px 5px 5px;
+      background: linear-gradient(180deg, #e8e8e8 0%, #c0c0c0 50%, #9a9a9a 100%);
+      min-height: 8px;
+      transition: height 0.45s cubic-bezier(.22,.68,0,1.2);
+      position: relative;
+      box-shadow: 0 2px 8px rgba(138, 138, 138, 0.2);
+    }
+    .bar.peak {
+      background: linear-gradient(180deg, #f0f0f0 0%, #b0b0b0 35%, #5a5a5a 100%);
+      box-shadow: 0 3px 12px rgba(90, 90, 90, 0.28);
+    }
+    .bar-label {
+      font-size: 10px;
+      color: #999;
+    }
+    .chart-toggle {
+      display: flex;
+      gap: 4px;
+      background: #f5f3ef;
+      border-radius: 100px;
+      padding: 3px;
+      float: right;
+      margin-top: -4px;
+    }
+    .chart-toggle button {
+      border: none;
+      background: transparent;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-family: inherit;
+      cursor: pointer;
+      color: #888;
+    }
+    .chart-toggle button.active {
+      background: #fff;
+      color: #333;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .mini-stat {
+      background: #f8f7f5;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .mini-stat .ms-label { font-size: 11px; color: #888; }
+    .mini-stat .ms-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-top: 2px;
+    }
+
+    .sparkline {
+      height: 48px;
+      margin-top: 12px;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+    }
+    .sparkline span {
+      flex: 1;
+      background: #c8c6c2;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+
+    .dash-bottom {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 18px;
+    }
+    .history-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0eeea;
+    }
+    .history-row:last-child { border-bottom: none; }
+    .history-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #f5f3ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .history-info { flex: 1; min-width: 0; }
+    .history-info .name {
+      font-weight: 500;
+      font-size: 13.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .history-info .date { font-size: 11px; color: #999; margin-top: 2px; }
+    .history-amount { font-weight: 600; font-size: 13.5px; text-align: right; }
+    .history-status {
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 2px;
+      text-align: right;
+    }
+    .history-status.ok { color: #2e7d32; }
+    .history-status.warn { color: #e65100; }
+    .history-status.done { color: #1565c0; }
+
+    .sidebar-icon-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 0 12px;
+    }
+    .sidebar-icon-nav a {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: #aaa;
+      text-decoration: none;
+      margin: 0 auto;
+      transition: all 0.2s;
+    }
+    .sidebar-icon-nav a:hover,
+    .sidebar-icon-nav a.active {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    @media (max-width: 1100px) {
+      .dash-grid { grid-template-columns: 1fr 1fr; }
+      .dash-grid .dash-card:last-child { grid-column: span 2; }
+    }
+    @media (max-width: 768px) {
+      .dash-grid, .dash-bottom { grid-template-columns: 1fr; }
+      .dash-grid .dash-card:last-child { grid-column: auto; }
+    }
+
+
+    .stock-alert-banner {
+      background: linear-gradient(90deg, #fff3e0, #ffe0b2);
+      border: 1px solid #ffcc80;
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .stock-alert-banner .alert-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .stock-alert-banner .alert-body { flex: 1; min-width: 200px; }
+    .stock-alert-banner .alert-title { font-weight: 600; color: #e65100; font-size: 14px; margin-bottom: 4px; }
+    .stock-alert-banner .alert-list { font-size: 13px; color: #bf360c; }
+    .stock-alert-banner .alert-list span { display: inline-block; margin: 2px 8px 2px 0; }
+    .nav-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      background: #e65100;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 50%;
+      padding: 0 4px;
+      margin-left: 6px;
+    }
+    .settings-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .settings-row label { font-size: 14px; font-weight: 500; }
+    .settings-row .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .settings-row input[type="number"] {
+      width: 80px;
+      padding: 8px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      text-align: center;
+    }
+  
+
+    /* Line chart */
+    .line-chart-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 200px;
+      margin-top: 8px;
+      background: linear-gradient(180deg, #fafaf9 0%, #fff 100%);
+      border-radius: 12px;
+      padding: 8px 4px 4px;
+    }
+    .line-chart-wrap svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .line-chart-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #666;
+    }
+    .line-chart-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .line-chart-legend i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Pie / Donut chart */
+    .pie-chart-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .pie-chart-svg {
+      width: 160px;
+      height: 160px;
+      flex-shrink: 0;
+    }
+    .pie-legend {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pie-legend-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #444;
+    }
+    .pie-legend-row .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    .line-chart-legend i {
+      box-shadow: 0 1px 4px rgba(138, 138, 138, 0.35);
+    }
+    .pie-legend-row .val {
+      margin-left: auto;
+      font-weight: 600;
+      color: #222;
+    }
+    .pie-center-text {
+      font-size: 12px;
+      fill: #8a8a8a;
+      text-anchor: middle;
+      font-family: inherit;
+    }
+    .pie-center-num {
+      font-size: 22px;
+      font-weight: 700;
+      fill: #2c2c2c;
+      text-anchor: middle;
+      font-family: inherit;
+    }
+
+    .dash-charts {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 900px) {
+      .dash-charts { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Login -->
+  <div class="login-wrap" id="loginScreen">
+    <div class="login-box">
+      <img src="image/logo.png" alt="Aura Beauty" />
+      <h1>Admin Panel</h1>
+      <p class="sub">ออร่า บิวตี้ · ระบบจัดการร้าน</p>
+      <form onsubmit="doLogin(event)" id="loginForm">
+        <input type="password" id="adminPass" placeholder="รหัสผ่าน" required autocomplete="current-password" minlength="6" />
+        <button type="submit" id="loginBtn">เข้าสู่ระบบ</button>
+      </form>
+      <p class="login-error" id="loginError"></p>
+      <p class="login-hint" id="loginHint">เซสชันหมดอายุใน 2 ชม. · ผิด 5 ครั้งจะถูกล็อก 15 นาที</p>
+      <p class="login-hint" style="margin-top:8px;"><a href="#" onclick="showChangePass();return false;" style="color:#999;">ตั้งรหัสผ่านใหม่</a></p>
+      <div id="changePassBox" style="display:none;margin-top:20px;text-align:left;">
+        <p style="font-size:13px;margin-bottom:10px;color:#666;">เปลี่ยนรหัสผ่าน (ต้องล็อกอินก่อน หรือใช้รหัสเดิม)</p>
+        <input type="password" id="oldPass" placeholder="รหัสผ่านปัจจุบัน" style="width:100%;padding:10px;margin-bottom:8px;border:1.5px solid #e4e2de;border-radius:10px;font-family:inherit;" />
+        <input type="password" id="newPass" placeholder="รหัสผ่านใหม่ (อย่างน้อย 8 ตัว)" minlength="8" style="width:100%;padding:10px;margin-bottom:8px;border:1.5px solid #e4e2de;border-radius:10px;font-family:inherit;" />
+        <input type="password" id="newPass2" placeholder="ยืนยันรหัสผ่านใหม่" minlength="8" style="width:100%;padding:10px;margin-bottom:8px;border:1.5px solid #e4e2de;border-radius:10px;font-family:inherit;" />
+        <button type="button" onclick="changePassword()" style="width:100%;padding:10px;border:none;border-radius:100px;background:linear-gradient(135deg,#d0ceca,#9a9894);color:#fff;font-family:inherit;cursor:pointer;">บันทึกรหัสผ่านใหม่</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin -->
+  <div class="admin" id="adminApp">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <img src="image/logo.png" alt="" />
+        <div>
+          <strong>AURA BEAUTY</strong><br/>
+          <span>Admin</span>
+        </div>
+      </div>
+      <nav class="admin-nav">
+        <a href="#" class="active" data-tab="dashboard" onclick="showTab('dashboard', this)">📊 ภาพรวม</a>
+        <a href="#" data-tab="orders" onclick="showTab('orders', this)">📦 ออเดอร์</a>
+        <a href="#" data-tab="products" onclick="showTab('products', this)">💄 สินค้า<span class="nav-badge" id="stockNavBadge" style="display:none;">0</span></a>
+        <a href="#" data-tab="settings" onclick="showTab('settings', this)">⚙️ ตั้งค่า</a>
+        <a href="index.html" target="_blank">🌐 ดูเว็บไซต์</a>
+        <a href="#" onclick="doLogout()" style="margin-top:24px;color:#e57373;">🚪 ออกจากระบบ</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <!-- Dashboard -->
+      <div class="tab-panel active" id="tab-dashboard">
+        <div class="dash-welcome">
+          <div>
+            <h1>Welcome Back, Admin</h1>
+            <p class="hello">ออร่า บิวตี้ · ภาพรวมร้านค้าวันนี้</p>
+          </div>
+          <div class="dash-welcome-actions">
+            <span class="date-pill" id="dashDate"></span>
+            <button type="button" class="btn-sm primary" onclick="showTab('orders', document.querySelector('[data-tab=orders]'))">ดูออเดอร์ทั้งหมด</button>
+          </div>
+        </div>
+        <div id="dashStockAlert"></div>
+        <div class="dash-grid" id="dashStats"></div>
+        <div class="dash-charts">
+          <div class="dash-card">
+            <div class="card-title">แนวโน้มยอดขาย (7 วัน)</div>
+            <div class="card-label">กราฟเส้น · รายวัน</div>
+            <div class="line-chart-wrap" id="dashLineChart"></div>
+          </div>
+          <div class="dash-card">
+            <div class="card-title">สัดส่วนสถานะออเดอร์</div>
+            <div class="card-label">กราฟวงกลม</div>
+            <div class="pie-chart-wrap" id="dashPieChart"></div>
+          </div>
+        </div>
+        <div class="dash-bottom">
+          <div class="dash-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <div class="card-title" style="margin:0;">Order History</div>
+              <a href="#" class="btn-sm" onclick="showTab('orders', document.querySelector('[data-tab=orders]'));return false;">ทั้งหมด</a>
+            </div>
+            <div class="card-label">ออเดอร์ล่าสุด</div>
+            <div id="dashOrders"></div>
+          </div>
+          <div class="dash-card">
+            <div class="card-title">สรุปสถานะ</div>
+            <div id="dashStatusSummary"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders -->
+      <div class="tab-panel" id="tab-orders">
+        <div class="admin-header">
+          <h1>ออเดอร์ทั้งหมด</h1>
+          <div style="display:flex;gap:8px;">
+            <select id="orderFilter" onchange="renderOrders()" class="btn-sm" style="cursor:pointer;">
+              <option value="all">ทั้งหมด</option>
+              <option value="paid">ชำระแล้ว</option>
+              <option value="cod">รอ COD</option>
+              <option value="done">จัดส่งแล้ว</option>
+            </select>
+            <button type="button" class="btn-sm danger" onclick="clearAllOrders()">ล้างออเดอร์ทั้งหมด</button>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-body" id="ordersTable"></div>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="tab-panel" id="tab-products">
+        <div class="admin-header">
+          <h1>สินค้า & สต็อก</h1>
+          <span style="color:#999;font-size:13px;" id="productCount"></span>
+        </div>
+        <div id="productsStockAlert"></div>
+        <div class="panel">
+          <div class="panel-body" id="productsTable"></div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="tab-panel" id="tab-settings">
+        <div class="admin-header">
+          <h1>ตั้งค่า</h1>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>แจ้งเตือนสต็อก</h2></div>
+          <div class="settings-row">
+            <div>
+              <label>เกณฑ์สต็อกต่ำ</label>
+              <div class="hint">แจ้งเตือนเมื่อจำนวนคงเหลือ ≤ ค่านี้ (ชิ้น)</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <input type="number" id="thresholdInput" min="0" max="999" value="5" />
+              <button type="button" class="btn-sm primary" onclick="saveThreshold()">บันทึก</button>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div>
+              <label>แจ้งเตือนอัตโนมัติ (เบราว์เซอร์)</label>
+              <div class="hint">ส่ง Notification เมื่อมีสินค้าสต็อกต่ำหรือหมด โดยอัตโนมัติ</div>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" id="autoNotifyCheck" onchange="toggleAutoNotify(this.checked)" style="width:18px;height:18px;" />
+              <span id="autoNotifyLabel">เปิด</span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <div>
+              <label>ความถี่การตรวจสอบ</label>
+              <div class="hint">ตรวจซ้ำทุกกี่นาที (เมื่อมีรายการสต็อกต่ำอยู่)</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <input type="number" id="notifyIntervalInput" min="1" max="1440" value="30" style="width:80px;padding:8px 12px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;text-align:center;" />
+              <span style="font-size:13px;color:#888;">นาที</span>
+              <button type="button" class="btn-sm primary" onclick="saveNotifyInterval()">บันทึก</button>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div>
+              <label>สิทธิ์การแจ้งเตือน</label>
+              <div class="hint" id="notifyPermStatus">—</div>
+            </div>
+            <button type="button" class="btn-sm primary" onclick="enableBrowserNotify()">ขอสิทธิ์แจ้งเตือน</button>
+          </div>
+          <div class="settings-row">
+            <div>
+              <label>ทดสอบการแจ้งเตือน</label>
+              <div class="hint">ส่ง notification ทดสอบทันที</div>
+            </div>
+            <button type="button" class="btn-sm" onclick="testStockNotify()">ทดสอบ</button>
+          </div>
+          <div class="settings-row">
+            <div>
+              <label>แสดงแบนเนอร์อีกครั้ง</label>
+              <div class="hint">หากเคยกดปิดแบนเนอร์บน Dashboard</div>
+            </div>
+            <button type="button" class="btn-sm" onclick="resetStockAlert()">รีเซ็ตแบนเนอร์</button>
+          </div>
+          <div class="settings-row" style="border:none;">
+            <div>
+              <label>สถานะสต็อกปัจจุบัน</label>
+              <div class="hint" id="thresholdStatus">—</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:20px;">
+          <div class="panel-head"><h2>สินค้าที่ต้องเติมสต็อก</h2></div>
+          <div class="panel-body" id="settingsLowList"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Order Detail Modal -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal" id="orderModalBody"></div>
+  </div>
+
+  <script src="stock.js"></script>
+  <script src="products-data.js"></script>
+  <script>
+    /* ========== Secure Auth ========== */
+    // Default password hash = SHA-256(salt + "admin123")
+    // Change password from UI stores new hash in localStorage
+    const AUTH_SALT = 'aura_beauty_salt_v1';
+    const DEFAULT_PASS_HASH = '362d7b29b20bff9b274a7dac800ba00d13ff00f5f662a557aa50ad933734fbdc';
+    const AUTH_KEY = 'aura_admin_auth';
+    const AUTH_EXP_KEY = 'aura_admin_exp';
+    const PASS_HASH_KEY = 'aura_admin_pass_hash';
+    const LOCK_KEY = 'aura_admin_lock';
+    const ATTEMPTS_KEY = 'aura_admin_attempts';
+    const SESSION_MS = 2 * 60 * 60 * 1000;   // 2 hours
+    const MAX_ATTEMPTS = 5;
+    const LOCK_MS = 15 * 60 * 1000;          // 15 minutes
+    const ORDERS_KEY = 'aura_orders';
+
+    async function sha256(text) {
+      const data = new TextEncoder().encode(text);
+      const buf = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function hashPassword(pass) {
+      return sha256(AUTH_SALT + pass);
+    }
+
+    function getStoredHash() {
+      return localStorage.getItem(PASS_HASH_KEY) || DEFAULT_PASS_HASH;
+    }
+
+    function isLocked() {
+      const until = parseInt(localStorage.getItem(LOCK_KEY) || '0', 10);
+      if (Date.now() < until) return until;
+      if (until) localStorage.removeItem(LOCK_KEY);
+      return 0;
+    }
+
+    function recordFail() {
+      let n = parseInt(localStorage.getItem(ATTEMPTS_KEY) || '0', 10) + 1;
+      localStorage.setItem(ATTEMPTS_KEY, String(n));
+      if (n >= MAX_ATTEMPTS) {
+        localStorage.setItem(LOCK_KEY, String(Date.now() + LOCK_MS));
+        localStorage.setItem(ATTEMPTS_KEY, '0');
+        return true;
+      }
+      return false;
+    }
+
+    function clearFails() {
+      localStorage.removeItem(ATTEMPTS_KEY);
+      localStorage.removeItem(LOCK_KEY);
+    }
+
+    function isAuthed() {
+      const token = sessionStorage.getItem(AUTH_KEY);
+      const exp = parseInt(sessionStorage.getItem(AUTH_EXP_KEY) || '0', 10);
+      if (token === '1' && Date.now() < exp) return true;
+      sessionStorage.removeItem(AUTH_KEY);
+      sessionStorage.removeItem(AUTH_EXP_KEY);
+      return false;
+    }
+
+    function setSession() {
+      sessionStorage.setItem(AUTH_KEY, '1');
+      sessionStorage.setItem(AUTH_EXP_KEY, String(Date.now() + SESSION_MS));
+    }
+
+    async function doLogin(e) {
+      e.preventDefault();
+      const err = document.getElementById('loginError');
+      const lockUntil = isLocked();
+      if (lockUntil) {
+        const mins = Math.ceil((lockUntil - Date.now()) / 60000);
+        err.style.display = 'block';
+        err.textContent = 'ถูกล็อกชั่วคราว กรุณารออีก ' + mins + ' นาที';
+        return;
+      }
+
+      const pass = document.getElementById('adminPass').value;
+      const btn = document.getElementById('loginBtn');
+      btn.disabled = true;
+      btn.textContent = 'กำลังตรวจสอบ...';
+
+      try {
+        const hash = await hashPassword(pass);
+        if (hash === getStoredHash()) {
+          clearFails();
+          setSession();
+          err.style.display = 'none';
+          showAdmin();
+        } else {
+          const locked = recordFail();
+          err.style.display = 'block';
+          if (locked) {
+            err.textContent = 'รหัสผิดหลายครั้ง บัญชีถูกล็อก 15 นาที';
+          } else {
+            const left = MAX_ATTEMPTS - parseInt(localStorage.getItem(ATTEMPTS_KEY) || '0', 10);
+            err.textContent = 'รหัสผ่านไม่ถูกต้อง (เหลือ ' + left + ' ครั้ง)';
+          }
+        }
+      } catch (ex) {
+        err.style.display = 'block';
+        err.textContent = 'เกิดข้อผิดพลาด กรุณาใช้เบราว์เซอร์ที่รองรับ';
+      }
+      btn.disabled = false;
+      btn.textContent = 'เข้าสู่ระบบ';
+    }
+
+    function doLogout() {
+      sessionStorage.removeItem(AUTH_KEY);
+      sessionStorage.removeItem(AUTH_EXP_KEY);
+      location.reload();
+    }
+
+    function showChangePass() {
+      const box = document.getElementById('changePassBox');
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    async function changePassword() {
+      const err = document.getElementById('loginError');
+      const oldP = document.getElementById('oldPass').value;
+      const newP = document.getElementById('newPass').value;
+      const newP2 = document.getElementById('newPass2').value;
+      err.style.display = 'block';
+
+      if (newP.length < 8) {
+        err.textContent = 'รหัสใหม่ต้องมีอย่างน้อย 8 ตัวอักษร';
+        return;
+      }
+      if (newP !== newP2) {
+        err.textContent = 'รหัสใหม่ไม่ตรงกัน';
+        return;
+      }
+      const oldHash = await hashPassword(oldP);
+      if (oldHash !== getStoredHash()) {
+        err.textContent = 'รหัสผ่านปัจจุบันไม่ถูกต้อง';
+        return;
+      }
+      const newHash = await hashPassword(newP);
+      localStorage.setItem(PASS_HASH_KEY, newHash);
+      err.style.color = '#2e7d32';
+      err.textContent = 'เปลี่ยนรหัสผ่านสำเร็จ กรุณาเข้าสู่ระบบด้วยรหัสใหม่';
+      document.getElementById('changePassBox').style.display = 'none';
+      document.getElementById('oldPass').value = '';
+      document.getElementById('newPass').value = '';
+      document.getElementById('newPass2').value = '';
+      setTimeout(function() { err.style.color = ''; err.style.display = 'none'; }, 4000);
+    }
+
+    function showAdmin() {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminApp').style.display = 'block';
+      // Session auto-check every minute
+      setInterval(function() {
+        if (!isAuthed()) {
+          alert('เซสชันหมดอายุ กรุณาเข้าสู่ระบบใหม่');
+          doLogout();
+        }
+      }, 60000);
+      renderDashboard();
+      renderOrders();
+      renderProducts();
+      updateStockNavBadge();
+      if (typeof startAutoStockMonitor === 'function' && typeof isAutoNotifyEnabled === 'function' && isAutoNotifyEnabled()) {
+        startAutoStockMonitor(PRODUCTS);
+      }
+    }
+
+    function getOrders() {
+      try {
+        const o = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+        return Array.isArray(o) ? o : [];
+      } catch { return []; }
+    }
+
+    function saveOrders(list) {
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(list));
+    }
+
+    function showTab(name, el) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      document.querySelectorAll('.admin-nav a[data-tab]').forEach(a => a.classList.remove('active'));
+      if (el) el.classList.add('active');
+      else {
+        const link = document.querySelector('.admin-nav a[data-tab="' + name + '"]');
+        if (link) link.classList.add('active');
+      }
+      if (name === 'orders') renderOrders();
+      if (name === 'dashboard') renderDashboard();
+      if (name === 'products') renderProducts();
+      if (name === 'settings') renderSettings();
+    }
+
+    function statusBadge(status) {
+      if (status === 'cod') return '<span class="badge badge-cod">รอ COD</span>';
+      if (status === 'done') return '<span class="badge badge-done">จัดส่งแล้ว</span>';
+      return '<span class="badge badge-paid">ชำระแล้ว</span>';
+    }
+
+    function fmt(n) {
+      return '฿' + Number(n).toLocaleString('th-TH');
+    }
+
+    function renderDashboard() {
+      renderStockAlertBanner('dashStockAlert');
+      const orders = getOrders();
+      const paid = orders.filter(o => o.status === 'paid' || o.status === 'done');
+      const cod = orders.filter(o => o.status === 'cod');
+      const done = orders.filter(o => o.status === 'done');
+      const revenue = paid.reduce((s, o) => s + (o.total || 0), 0);
+      const codPending = cod.reduce((s, o) => s + (o.total || 0), 0);
+      const avg = paid.length ? Math.round(revenue / paid.length) : 0;
+
+      document.getElementById('dashDate').textContent = new Date().toLocaleDateString('th-TH', {
+        day: 'numeric', month: 'short', year: 'numeric'
+      });
+
+      // Build last 6 months bar data from orders
+      const months = [];
+      const now = new Date();
+      for (let i = 5; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        months.push({
+          key: d.getFullYear() + '-' + d.getMonth(),
+          label: d.toLocaleDateString('en', { month: 'short' }).toUpperCase(),
+          total: 0
+        });
+      }
+      orders.forEach(function(o) {
+        if (!o.date) return;
+        const d = new Date(o.date);
+        const key = d.getFullYear() + '-' + d.getMonth();
+        const m = months.find(x => x.key === key);
+        if (m) m.total += (o.total || 0);
+      });
+      const maxBar = Math.max.apply(null, months.map(m => m.total).concat([1]));
+      const bars = months.map(function(m) {
+        const h = Math.max(8, Math.round((m.total / maxBar) * 120));
+        const peak = m.total === maxBar && m.total > 0 ? ' peak' : '';
+        return '<div class="bar-col"><div class="bar' + peak + '" style="height:' + h + 'px" title="' + fmt(m.total) + '"></div><span class="bar-label">' + m.label + '</span></div>';
+      }).join('');
+
+      // Sparkline from last 12 orders totals
+      const recentTotals = orders.slice(0, 12).map(o => o.total || 0).reverse();
+      while (recentTotals.length < 12) recentTotals.unshift(0);
+      const maxSpark = Math.max.apply(null, recentTotals.concat([1]));
+      const sparks = recentTotals.map(function(t) {
+        const h = Math.max(4, Math.round((t / maxSpark) * 44));
+        return '<span style="height:' + h + 'px"></span>';
+      }).join('');
+
+      document.getElementById('dashStats').innerHTML =
+        '<div class="dash-card dash-card-hero">' +
+          '<div class="card-label">Total Revenue</div>' +
+          '<div class="card-title">รายได้รวม (ชำระแล้ว)</div>' +
+          '<div class="hero-amount">' + fmt(revenue) + '</div>' +
+          '<span class="chip chip-up">' + paid.length + ' ออเดอร์ที่ชำระแล้ว</span>' +
+          '<div class="hero-meta">' +
+            '<span>รอ COD · ' + fmt(codPending) + '</span>' +
+            '<span>' + Object.keys(PRODUCTS || {}).length + ' สินค้า</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="dash-card">' +
+          '<div class="card-title">Engagement <span class="chip chip-neutral" style="float:right;font-weight:500;">Monthly</span></div>' +
+          '<div class="card-label">ยอดขายรายเดือน</div>' +
+          '<div class="bar-chart">' + bars + '</div>' +
+        '</div>' +
+        '<div class="dash-card">' +
+          '<div class="card-label">Overview</div>' +
+          '<div class="card-title">สรุปร้าน</div>' +
+          '<div class="mini-stats">' +
+            '<div class="mini-stat"><div class="ms-label">ออเดอร์ทั้งหมด</div><div class="ms-value">' + orders.length + '</div></div>' +
+            '<div class="mini-stat"><div class="ms-label">รอ COD</div><div class="ms-value">' + cod.length + '</div></div>' +
+            '<div class="mini-stat"><div class="ms-label">จัดส่งแล้ว</div><div class="ms-value">' + done.length + '</div></div>' +
+            '<div class="mini-stat"><div class="ms-label">เฉลี่ย/ออเดอร์</div><div class="ms-value" style="font-size:1.05rem;">' + fmt(avg) + '</div></div>' +
+          '</div>' +
+          '<div class="sparkline">' + sparks + '</div>' +
+        '</div>';
+
+      // Order history list style
+      const recent = orders.slice(0, 6);
+      if (!recent.length) {
+        document.getElementById('dashOrders').innerHTML = '<div class="empty-state" style="padding:32px;">ยังไม่มีออเดอร์</div>';
+      } else {
+        document.getElementById('dashOrders').innerHTML = recent.map(function(o) {
+          const icon = o.method === 'cod' ? '📦' : (o.method === 'promptpay' ? '📱' : (o.method === 'card' ? '💳' : '🏦'));
+          const stClass = o.status === 'cod' ? 'warn' : (o.status === 'done' ? 'done' : 'ok');
+          const stText = o.status === 'cod' ? 'รอ COD' : (o.status === 'done' ? 'จัดส่งแล้ว' : 'ชำระแล้ว');
+          return '<div class="history-row" style="cursor:pointer;" onclick="viewOrder(\'' + o.orderId + '\')">' +
+            '<div class="history-icon">' + icon + '</div>' +
+            '<div class="history-info">' +
+              '<div class="name">' + (o.customer && o.customer.name ? o.customer.name : o.orderId) + '</div>' +
+              '<div class="date">' + (o.dateDisplay || '') + ' · ' + (o.methodLabel || '') + '</div>' +
+            '</div>' +
+            '<div>' +
+              '<div class="history-amount">' + fmt(o.total) + '</div>' +
+              '<div class="history-status ' + stClass + '">' + stText + '</div>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+      }
+
+      // Status summary
+      const total = orders.length || 1;
+      document.getElementById('dashStatusSummary').innerHTML =
+        statusBar('ชำระแล้ว', paid.filter(o => o.status === 'paid').length, total, '#5a5a5a') +
+        statusBar('รอ COD', cod.length, total, '#a8a8a8') +
+        statusBar('จัดส่งแล้ว', done.length, total, '#c0c0c0') +
+        '<div style="margin-top:20px;padding:14px;background:#f8f7f5;border-radius:12px;font-size:13px;color:#666;">' +
+          'สินค้าในระบบ <strong style="color:#333;">' + Object.keys(PRODUCTS || {}).length + '</strong> รายการ' +
+        '</div>';
+
+      renderLineChart(orders);
+      renderPieChart(orders);
+    }
+
+    function renderLineChart(orders) {
+      const el = document.getElementById('dashLineChart');
+      if (!el) return;
+      const days = [];
+      const now = new Date();
+      for (let i = 6; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+        const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        days.push({
+          key: key,
+          label: d.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' }),
+          total: 0,
+          count: 0
+        });
+      }
+      orders.forEach(function(o) {
+        let od = null;
+        if (o.date) od = new Date(o.date);
+        else if (o.timestamp) od = new Date(o.timestamp);
+        else if (o.createdAt) od = new Date(o.createdAt);
+        if (!od || isNaN(od.getTime())) return;
+        const key = od.getFullYear() + '-' + String(od.getMonth()+1).padStart(2,'0') + '-' + String(od.getDate()).padStart(2,'0');
+        const day = days.find(function(x) { return x.key === key; });
+        if (day) {
+          day.total += Number(o.total) || 0;
+          day.count += 1;
+        }
+      });
+      const totals = days.map(function(d) { return d.total; });
+      const maxVal = Math.max.apply(null, totals.concat([0]));
+      const sum = totals.reduce(function(s, v) { return s + v; }, 0);
+      const hasData = maxVal > 0;
+
+      const W = 560, H = 200, padL = 36, padR = 16, padT = 24, padB = 36;
+      const chartW = W - padL - padR;
+      const chartH = H - padT - padB;
+      // when no data, draw flat line mid-low so it's visible
+      const scaleMax = hasData ? maxVal : 1;
+      const points = days.map(function(d, i) {
+        const x = padL + (i / (days.length - 1)) * chartW;
+        const ratio = hasData ? (d.total / scaleMax) : 0.12;
+        const y = padT + chartH - ratio * chartH;
+        return { x: x, y: y, d: d };
+      });
+
+      // smooth-ish polyline
+      let path = '';
+      points.forEach(function(p, i) {
+        path += (i === 0 ? 'M' : 'L') + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ' ';
+      });
+      const baseY = padT + chartH;
+      const area = path + 'L' + points[points.length-1].x.toFixed(1) + ',' + baseY +
+        ' L' + points[0].x.toFixed(1) + ',' + baseY + ' Z';
+
+      // grid lines
+      let grids = '';
+      for (let g = 0; g <= 4; g++) {
+        const gy = padT + (chartH * g / 4);
+        grids += '<line x1="' + padL + '" y1="' + gy + '" x2="' + (W - padR) + '" y2="' + gy + '" stroke="#eceae6" stroke-width="1"/>';
+        if (hasData) {
+          const val = Math.round(scaleMax * (1 - g / 4));
+          grids += '<text x="' + (padL - 6) + '" y="' + (gy + 3) + '" text-anchor="end" font-size="9" fill="#b0b0b0">' +
+            (val >= 1000 ? (val/1000).toFixed(1) + 'k' : val) + '</text>';
+        }
+      }
+
+      const dots = points.map(function(p) {
+        return '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="5.5" fill="#8a8a8a" stroke="#fff" stroke-width="2.5">' +
+          '<title>' + p.d.label + ': ฿' + p.d.total.toLocaleString() + ' · ' + p.d.count + ' ออเดอร์</title></circle>';
+      }).join('');
+
+      const labels = points.map(function(p) {
+        return '<text x="' + p.x.toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle" font-size="11" fill="#8a8a8a">' + p.d.label + '</text>';
+      }).join('');
+
+      el.innerHTML =
+        '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" height="180" preserveAspectRatio="xMidYMid meet" style="display:block;">' +
+          '<defs>' +
+            '<linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">' +
+              '<stop offset="0%" stop-color="#c0c0c0" stop-opacity="0.55"/>' +
+              '<stop offset="70%" stop-color="#e8e8e8" stop-opacity="0.15"/>' +
+              '<stop offset="100%" stop-color="#f8f7f5" stop-opacity="0"/>' +
+            '</linearGradient>' +
+            '<linearGradient id="strokeGrad" x1="0" y1="0" x2="1" y2="0">' +
+              '<stop offset="0%" stop-color="#6e6e6e"/>' +
+              '<stop offset="50%" stop-color="#a0a0a0"/>' +
+              '<stop offset="100%" stop-color="#5a5a5a"/>' +
+            '</linearGradient>' +
+          '</defs>' +
+          grids +
+          '<path d="' + area + '" fill="url(#lineGrad)"/>' +
+          '<path d="' + path + '" fill="none" stroke="url(#strokeGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>' +
+          dots + labels +
+        '</svg>' +
+        '<div class="line-chart-legend">' +
+          '<span><i style="background:linear-gradient(135deg,#6e6e6e,#c0c0c0);"></i> ยอดขาย 7 วัน · รวม ฿' + sum.toLocaleString() +
+          (hasData ? '' : ' <span style="color:#a8a8a8;font-weight:400;">· ยังไม่มียอดในช่วงนี้</span>') +
+          '</span>' +
+        '</div>';
+    }
+
+    function renderPieChart(orders) {
+      const el = document.getElementById('dashPieChart');
+      if (!el) return;
+      const paidOnly = orders.filter(function(o) { return o.status === 'paid'; }).length;
+      const cod = orders.filter(function(o) { return o.status === 'cod'; }).length;
+      const done = orders.filter(function(o) { return o.status === 'done'; }).length;
+      const other = Math.max(0, orders.length - paidOnly - cod - done);
+      const segments = [
+        { label: 'ชำระแล้ว', count: paidOnly, color: '#5a5a5a' },
+        { label: 'รอ COD', count: cod, color: '#a8a8a8' },
+        { label: 'จัดส่งแล้ว', count: done, color: '#c0c0c0' },
+        { label: 'อื่นๆ', count: other, color: '#e0e0e0' }
+      ].filter(function(s) { return s.count > 0; });
+      const total = orders.length;
+      if (!total || !segments.length) {
+        el.innerHTML = '<div class="empty-state" style="padding:24px;width:100%;">ยังไม่มีข้อมูลออเดอร์</div>';
+        return;
+      }
+      const cx = 80, cy = 80, r = 62, rInner = 38;
+      let angle = -Math.PI / 2;
+      let paths = '';
+      segments.forEach(function(s) {
+        const slice = (s.count / total) * Math.PI * 2;
+        const x1 = cx + r * Math.cos(angle);
+        const y1 = cy + r * Math.sin(angle);
+        const x2 = cx + r * Math.cos(angle + slice);
+        const y2 = cy + r * Math.sin(angle + slice);
+        const xi1 = cx + rInner * Math.cos(angle);
+        const yi1 = cy + rInner * Math.sin(angle);
+        const xi2 = cx + rInner * Math.cos(angle + slice);
+        const yi2 = cy + rInner * Math.sin(angle + slice);
+        const large = slice > Math.PI ? 1 : 0;
+        // donut path: outer arc then inner arc reverse
+        const d = 'M ' + x1.toFixed(2) + ' ' + y1.toFixed(2) +
+          ' A ' + r + ' ' + r + ' 0 ' + large + ' 1 ' + x2.toFixed(2) + ' ' + y2.toFixed(2) +
+          ' L ' + xi2.toFixed(2) + ' ' + yi2.toFixed(2) +
+          ' A ' + rInner + ' ' + rInner + ' 0 ' + large + ' 0 ' + xi1.toFixed(2) + ' ' + yi1.toFixed(2) +
+          ' Z';
+        paths += '<path d="' + d + '" fill="' + s.color + '" stroke="#fff" stroke-width="3"><title>' + s.label + ': ' + s.count + '</title></path>';
+        angle += slice;
+      });
+      let legend = segments.map(function(s) {
+        const pct = Math.round((s.count / total) * 100);
+        return '<div class="pie-legend-row">' +
+          '<span class="dot" style="background:' + s.color + ';"></span>' +
+          '<span>' + s.label + '</span>' +
+          '<span class="val">' + s.count + ' (' + pct + '%)</span>' +
+        '</div>';
+      }).join('');
+      el.innerHTML =
+        '<svg class="pie-chart-svg" viewBox="0 0 160 160">' +
+          paths +
+          '<text class="pie-center-num" x="80" y="76">' + total + '</text>' +
+          '<text class="pie-center-text" x="80" y="96">ออเดอร์</text>' +
+        '</svg>' +
+        '<div class="pie-legend">' + legend + '</div>';
+    }
+
+    function statusBar(label, count, total, color) {
+      const pct = Math.round((count / total) * 100);
+      return '<div style="margin-bottom:14px;">' +
+        '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">' +
+          '<span>' + label + '</span><strong>' + count + '</strong>' +
+        '</div>' +
+        '<div style="height:8px;background:#f0eeea;border-radius:100px;overflow:hidden;">' +
+          '<div style="height:100%;width:' + pct + '%;background:' + color + ';border-radius:100px;"></div>' +
+        '</div></div>';
+    }
+
+    function tableOrders(list) {
+      if (!list.length) return '<div class="empty-state">ไม่พบออเดอร์</div>';
+      let html = '<table class="admin-table"><thead><tr>' +
+        '<th>เลขที่</th><th>ลูกค้า</th><th>วันที่</th><th>ช่องทาง</th><th>ยอด</th><th>สถานะ</th><th></th>' +
+        '</tr></thead><tbody>';
+      list.forEach(function(o) {
+        html += '<tr>' +
+          '<td><strong>' + o.orderId + '</strong></td>' +
+          '<td>' + (o.customer && o.customer.name ? o.customer.name : '-') + '<br/><small style="color:#999;">' + (o.customer && o.customer.phone ? o.customer.phone : '') + '</small></td>' +
+          '<td style="font-size:12px;">' + (o.dateDisplay || '-') + '</td>' +
+          '<td>' + (o.methodLabel || o.method || '-') + '</td>' +
+          '<td><strong>' + fmt(o.total) + '</strong></td>' +
+          '<td>' + statusBadge(o.status) + '</td>' +
+          '<td><button type="button" class="btn-sm" onclick="viewOrder(\'' + o.orderId + '\')">ดู</button></td>' +
+        '</tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function renderOrders() {
+      let list = getOrders();
+      const filter = document.getElementById('orderFilter')?.value || 'all';
+      if (filter !== 'all') list = list.filter(o => o.status === filter);
+      document.getElementById('ordersTable').innerHTML = tableOrders(list);
+    }
+
+    function viewOrder(id) {
+      const o = getOrders().find(x => x.orderId === id);
+      if (!o) return;
+      const items = (o.items || []).map(function(it) {
+        return '<tr><td>' + it.name + '</td><td>' + it.qty + '</td><td>' + fmt(it.price) + '</td><td>' + fmt(it.subtotal) + '</td></tr>';
+      }).join('');
+
+      let actions = '<button type="button" class="btn-sm" onclick="closeModal()">ปิด</button>';
+      if (o.status === 'cod') {
+        actions += '<button type="button" class="btn-sm ok" onclick="updateStatus(\'' + id + '\',\'paid\')">✓ รับเงิน COD แล้ว</button>';
+      }
+      if (o.status === 'paid' || o.status === 'cod') {
+        actions += '<button type="button" class="btn-sm primary" onclick="updateStatus(\'' + id + '\',\'done\')">📦 จัดส่งแล้ว</button>';
+      }
+      actions += '<button type="button" class="btn-sm danger" onclick="deleteOrder(\'' + id + '\')">ลบออเดอร์</button>';
+
+      document.getElementById('orderModalBody').innerHTML =
+        '<h2>ออเดอร์ ' + o.orderId + '</h2>' +
+        '<div class="meta">' +
+          'สถานะ: ' + statusBadge(o.status) + '<br/>' +
+          'วันที่: <strong>' + (o.dateDisplay || '-') + '</strong><br/>' +
+          'ช่องทาง: <strong>' + (o.methodLabel || '-') + '</strong>' +
+        '</div>' +
+        '<p style="font-size:13px;margin-bottom:8px;"><strong>ลูกค้า:</strong> ' + (o.customer?.name || '-') +
+        ' · ' + (o.customer?.phone || '') +
+        (o.customer?.email ? ' · ' + o.customer.email : '') + '</p>' +
+        '<p style="font-size:13px;color:#666;margin-bottom:12px;">ที่อยู่: ' + (o.customer?.address || '-') + '</p>' +
+        (o.customer?.note ? '<p style="font-size:13px;color:#666;">หมายเหตุ: ' + o.customer.note + '</p>' : '') +
+        '<table><thead><tr><th>สินค้า</th><th>จำนวน</th><th>ราคา</th><th>รวม</th></tr></thead><tbody>' + items + '</tbody></table>' +
+        '<div class="total">ยอดรวม ' + fmt(o.total) + '</div>' +
+        '<div class="modal-actions">' + actions + '</div>';
+
+      document.getElementById('orderModal').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('orderModal').classList.remove('show');
+    }
+
+    function updateStatus(id, status) {
+      const list = getOrders();
+      const o = list.find(x => x.orderId === id);
+      if (o) {
+        o.status = status;
+        saveOrders(list);
+        // sync last order if same
+        try {
+          const last = JSON.parse(localStorage.getItem('aura_last_order') || '{}');
+          if (last.orderId === id) {
+            last.status = status;
+            localStorage.setItem('aura_last_order', JSON.stringify(last));
+          }
+        } catch(e) {}
+      }
+      closeModal();
+      renderOrders();
+      renderDashboard();
+    }
+
+    function deleteOrder(id) {
+      if (!confirm('ลบออเดอร์ ' + id + ' ?')) return;
+      saveOrders(getOrders().filter(o => o.orderId !== id));
+      closeModal();
+      renderOrders();
+      renderDashboard();
+    }
+
+    function clearAllOrders() {
+      if (!confirm('ลบออเดอร์ทั้งหมดในระบบ?')) return;
+      saveOrders([]);
+      renderOrders();
+      renderDashboard();
+    }
+
+    function renderProducts() {
+      const list = Object.values(PRODUCTS || {});
+      document.getElementById('productCount').textContent = list.length + ' รายการ';
+      if (!list.length) {
+        document.getElementById('productsTable').innerHTML = '<div class="empty-state">ไม่มีสินค้า</div>';
+        return;
+      }
+      const cats = { brush: 'แปรง', eyeliner: 'อายไลเนอร์', foundation: 'รองพื้น', blush: 'บลัช', powder: 'แป้ง/คุชชั่น', lipstick: 'ลิป' };
+      let lowCount = 0;
+      let html = '<table class="admin-table"><thead><tr><th></th><th>สินค้า</th><th>หมวด</th><th>ราคา</th><th>สต็อก</th><th></th></tr></thead><tbody>';
+      list.forEach(function(p) {
+        const qty = typeof getStock === 'function' ? getStock(p.id) : 0;
+        const threshold = typeof getStockThreshold === 'function' ? getStockThreshold() : 5;
+        if (qty <= threshold) lowCount++;
+        const stockCls = qty <= 0 ? 'badge-cod' : (qty <= threshold ? 'badge-cod' : 'badge-paid');
+        html += '<tr>' +
+          '<td><img src="' + p.image + '" class="product-thumb" alt="" /></td>' +
+          '<td><strong>' + p.name_th + '</strong>' + (p.badge ? ' <span class="badge badge-paid">' + p.badge + '</span>' : '') + '</td>' +
+          '<td>' + (cats[p.cat] || p.cat) + '</td>' +
+          '<td><strong>' + fmt(p.price) + '</strong></td>' +
+          '<td>' +
+            '<div style="display:flex;align-items:center;gap:6px;">' +
+              '<button type="button" class="btn-sm" style="padding:4px 10px;" onclick="adjustStock(\'' + p.id + '\',-1)">−</button>' +
+              '<input type="number" min="0" value="' + qty + '" id="stock-' + p.id + '" ' +
+                'style="width:64px;padding:6px 8px;border:1.5px solid #e4e2de;border-radius:8px;text-align:center;font-family:inherit;" ' +
+                'onchange="saveStockInput(\'' + p.id + '\')" />' +
+              '<button type="button" class="btn-sm" style="padding:4px 10px;" onclick="adjustStock(\'' + p.id + '\',1)">+</button>' +
+              '<span class="badge ' + stockCls + '" id="stock-badge-' + p.id + '">' + (qty <= 0 ? 'หมด' : qty) + '</span>' +
+            '</div>' +
+          '</td>' +
+          '<td><a href="product.html?id=' + p.id + '" target="_blank" class="btn-sm">ดูหน้าเว็บ</a></td>' +
+        '</tr>';
+      });
+      html += '</tbody></table>';
+      if (lowCount > 0) {
+        html = '<div style="padding:12px 16px;background:#fff3e0;color:#e65100;font-size:13px;border-bottom:1px solid #ffe0b2;">⚠ มีสินค้าสต็อกต่ำหรือหมด ' + lowCount + ' รายการ</div>' + html;
+      }
+      document.getElementById('productsTable').innerHTML = html;
+      renderStockAlertBanner('productsStockAlert');
+      updateStockNavBadge();
+    }
+
+    function adjustStock(id, delta) {
+      const input = document.getElementById('stock-' + id);
+      let v = parseInt(input.value, 10) || 0;
+      v = Math.max(0, v + delta);
+      input.value = v;
+      setStock(id, v);
+      const badge = document.getElementById('stock-badge-' + id);
+      if (badge) {
+        badge.textContent = v <= 0 ? 'หมด' : v;
+        var th = typeof getStockThreshold === 'function' ? getStockThreshold() : 5;
+        badge.className = 'badge ' + (v <= th ? 'badge-cod' : 'badge-paid');
+      }
+    }
+
+    function saveStockInput(id) {
+      const input = document.getElementById('stock-' + id);
+      const v = Math.max(0, parseInt(input.value, 10) || 0);
+      input.value = v;
+      setStock(id, v);
+      const badge = document.getElementById('stock-badge-' + id);
+      if (badge) {
+        badge.textContent = v <= 0 ? 'หมด' : v;
+        var th = typeof getStockThreshold === 'function' ? getStockThreshold() : 5;
+        badge.className = 'badge ' + (v <= th ? 'badge-cod' : 'badge-paid');
+      }
+    }
+
+    document.getElementById('orderModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+
+    function updateStockNavBadge() {
+      const items = typeof getLowStockItems === 'function' ? getLowStockItems(PRODUCTS) : [];
+      const badge = document.getElementById('stockNavBadge');
+      if (!badge) return;
+      if (items.length > 0) {
+        badge.style.display = 'inline-flex';
+        badge.textContent = items.length;
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function renderStockAlertBanner(containerId) {
+      const el = document.getElementById(containerId);
+      if (!el) return;
+      const items = typeof getLowStockItems === 'function' ? getLowStockItems(PRODUCTS) : [];
+      updateStockNavBadge();
+      if (!items.length) {
+        el.innerHTML = '';
+        return;
+      }
+      if (typeof isStockAlertDismissed === 'function' && isStockAlertDismissed() && containerId === 'dashStockAlert') {
+        el.innerHTML = '';
+        return;
+      }
+      const threshold = getStockThreshold();
+      const out = items.filter(function(x) { return x.out; });
+      const low = items.filter(function(x) { return !x.out; });
+      let list = items.slice(0, 8).map(function(x) {
+        return '<span>' + (x.out ? '🔴' : '🟠') + ' ' + x.name + ' (' + x.qty + ')</span>';
+      }).join('');
+      if (items.length > 8) list += '<span>+' + (items.length - 8) + ' รายการ</span>';
+
+      el.innerHTML =
+        '<div class="stock-alert-banner">' +
+          '<div class="alert-icon">⚠️</div>' +
+          '<div class="alert-body">' +
+            '<div class="alert-title">แจ้งเตือนสต็อกต่ำ (เกณฑ์ ≤ ' + threshold + ' ชิ้น)</div>' +
+            '<div class="alert-list">' +
+              (out.length ? out.length + ' รายการหมดสต็อก · ' : '') +
+              (low.length ? low.length + ' รายการใกล้หมด' : '') +
+            '</div>' +
+            '<div class="alert-list" style="margin-top:6px;">' + list + '</div>' +
+          '</div>' +
+          '<div style="display:flex;gap:8px;flex-shrink:0;">' +
+            '<button type="button" class="btn-sm" onclick="showTab(\'products\', document.querySelector(\'[data-tab=products]\'))">จัดการสต็อก</button>' +
+            (containerId === 'dashStockAlert' ?
+              '<button type="button" class="btn-sm" onclick="dismissDashAlert()">ปิด</button>' : '') +
+          '</div>' +
+        '</div>';
+    }
+
+    function dismissDashAlert() {
+      if (typeof dismissStockAlert === 'function') dismissStockAlert();
+      const el = document.getElementById('dashStockAlert');
+      if (el) el.innerHTML = '';
+    }
+
+    function saveThreshold() {
+      const input = document.getElementById('thresholdInput');
+      const v = setStockThreshold(input.value);
+      input.value = v;
+      if (typeof clearStockAlertDismiss === 'function') clearStockAlertDismiss();
+      renderSettings();
+      renderProducts();
+      renderDashboard();
+      updateStockNavBadge();
+      alert('บันทึกเกณฑ์สต็อกต่ำ = ' + v + ' ชิ้น แล้ว');
+    }
+
+    function resetStockAlert() {
+      if (typeof clearStockAlertDismiss === 'function') clearStockAlertDismiss();
+      renderDashboard();
+      renderSettings();
+      alert('เปิดการแจ้งเตือนอีกครั้งแล้ว');
+    }
+
+    function renderSettings() {
+      const input = document.getElementById('thresholdInput');
+      const th = getStockThreshold();
+      if (input) input.value = th;
+
+      const autoCheck = document.getElementById('autoNotifyCheck');
+      const autoOn = typeof isAutoNotifyEnabled === 'function' ? isAutoNotifyEnabled() : true;
+      if (autoCheck) autoCheck.checked = autoOn;
+      const autoLabel = document.getElementById('autoNotifyLabel');
+      if (autoLabel) autoLabel.textContent = autoOn ? 'เปิด' : 'ปิด';
+
+      const intInput = document.getElementById('notifyIntervalInput');
+      if (intInput && typeof getNotifyInterval === 'function') intInput.value = getNotifyInterval();
+
+      const permEl = document.getElementById('notifyPermStatus');
+      if (permEl) {
+        if (!('Notification' in window)) {
+          permEl.innerHTML = '<span style="color:#c62828;">เบราว์เซอร์ไม่รองรับ Notification</span>';
+        } else if (Notification.permission === 'granted') {
+          permEl.innerHTML = '<span style="color:#2e7d32;">✓ อนุญาตแล้ว — แจ้งเตือนอัตโนมัติพร้อมใช้</span>';
+        } else if (Notification.permission === 'denied') {
+          permEl.innerHTML = '<span style="color:#c62828;">ถูกบล็อก — เปิดสิทธิ์ในการตั้งค่าเบราว์เซอร์</span>';
+        } else {
+          permEl.innerHTML = '<span style="color:#e65100;">ยังไม่อนุญาต — กด「ขอสิทธิ์แจ้งเตือน」</span>';
+        }
+      }
+
+      const items = getLowStockItems(PRODUCTS);
+      const status = document.getElementById('thresholdStatus');
+      if (status) {
+        status.innerHTML = items.length
+          ? '<span style="color:#e65100;font-weight:600;">มีสินค้าต้องเติม ' + items.length + ' รายการ</span>'
+          : '<span style="color:#2e7d32;">สต็อกทั้งหมดอยู่ในเกณฑ์ปกติ</span>';
+      }
+      const listEl = document.getElementById('settingsLowList');
+      if (!listEl) return;
+      if (!items.length) {
+        listEl.innerHTML = '<div class="empty-state">ไม่มีสินค้าสต็อกต่ำ 🎉</div>';
+        return;
+      }
+      let html = '<table class="admin-table"><thead><tr><th></th><th>สินค้า</th><th>คงเหลือ</th><th>สถานะ</th><th></th></tr></thead><tbody>';
+      items.forEach(function(x) {
+        html += '<tr>' +
+          '<td>' + (x.image ? '<img src="' + x.image + '" class="product-thumb" alt="" />' : '') + '</td>' +
+          '<td><strong>' + x.name + '</strong></td>' +
+          '<td><strong>' + x.qty + '</strong></td>' +
+          '<td><span class="badge badge-cod">' + (x.out ? 'หมดสต็อก' : 'สต็อกต่ำ') + '</span></td>' +
+          '<td><button type="button" class="btn-sm primary" onclick="showTab(\'products\', document.querySelector(\'[data-tab=products]\'))">เติมสต็อก</button></td>' +
+        '</tr>';
+      });
+      html += '</tbody></table>';
+      listEl.innerHTML = html;
+    }
+
+    function toggleAutoNotify(on) {
+      setAutoNotifyEnabled(on);
+      const label = document.getElementById('autoNotifyLabel');
+      if (label) label.textContent = on ? 'เปิด' : 'ปิด';
+      if (on) startAutoStockMonitor(PRODUCTS);
+      else stopAutoStockMonitor();
+    }
+
+    async function enableBrowserNotify() {
+      const result = await requestNotifyPermission();
+      renderSettings();
+      if (result === 'granted') {
+        alert('อนุญาตการแจ้งเตือนแล้ว');
+        startAutoStockMonitor(PRODUCTS);
+        runAutoStockCheck(PRODUCTS);
+      } else if (result === 'denied') {
+        alert('ถูกบล็อกการแจ้งเตือน กรุณาเปิดสิทธิ์ในการตั้งค่าเบราว์เซอร์');
+      } else if (result === 'unsupported') {
+        alert('เบราว์เซอร์นี้ไม่รองรับการแจ้งเตือน');
+      }
+    }
+
+    function saveNotifyInterval() {
+      const input = document.getElementById('notifyIntervalInput');
+      const v = setNotifyInterval(input.value);
+      input.value = v;
+      if (isAutoNotifyEnabled()) startAutoStockMonitor(PRODUCTS, v);
+      alert('ตั้งความถี่ตรวจสอบทุก ' + v + ' นาที แล้ว');
+    }
+
+    function testStockNotify() {
+      if (!('Notification' in window)) {
+        alert('เบราว์เซอร์ไม่รองรับ');
+        return;
+      }
+      if (Notification.permission !== 'granted') {
+        alert('กรุณาขอสิทธิ์แจ้งเตือนก่อน');
+        return;
+      }
+      showBrowserNotification(
+        '✓ ทดสอบ · Aura Beauty',
+        'ระบบแจ้งเตือนอัตโนมัติพร้อมใช้งาน\nเกณฑ์สต็อกต่ำ ≤ ' + getStockThreshold() + ' ชิ้น',
+        'aura-test'
+      );
+    }
+
+    // Init
+    if (isAuthed()) showAdmin();
+  </script>
+</body>
+</html>

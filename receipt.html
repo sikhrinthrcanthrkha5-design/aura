@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ใบเสร็จรับเงิน | Aura Beauty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .receipt-page {
+      padding: 100px 16px 60px;
+      background: #f0eeea;
+      min-height: 100vh;
+    }
+    .receipt-paper {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      padding: 36px 40px 32px;
+      position: relative;
+      color: #222;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .receipt-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+    .receipt-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .receipt-brand img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .receipt-brand h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 0.02em;
+      color: #1a1a1a;
+    }
+    .receipt-brand .sub {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 2px;
+    }
+    .receipt-logo-side {
+      width: 72px;
+      height: 72px;
+      opacity: 0.9;
+    }
+    .receipt-logo-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .success-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f5e9;
+      color: #1b5e20;
+      padding: 5px 14px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 12px 0 20px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 28px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+    .info-grid .row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 6px;
+      padding: 3px 0;
+    }
+    .info-grid .label {
+      color: #555;
+      font-weight: 500;
+    }
+    .info-grid .value {
+      color: #111;
+    }
+    .section-title {
+      font-weight: 600;
+      font-size: 13px;
+      margin: 16px 0 8px;
+      color: #333;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 4px;
+    }
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px;
+      font-size: 13px;
+    }
+    .items-table th {
+      background: #f7f6f4;
+      border: 1px solid #d0d0d0;
+      padding: 8px 10px;
+      font-weight: 600;
+      color: #444;
+      text-align: center;
+    }
+    .items-table th:nth-child(2) { text-align: left; }
+    .items-table td {
+      border: 1px solid #d8d8d8;
+      padding: 8px 10px;
+      vertical-align: middle;
+    }
+    .items-table td.num { text-align: center; }
+    .items-table td.right { text-align: right; }
+    .items-table td.left { text-align: left; }
+    .summary-block {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .notes-box {
+      border: 1px solid #ddd;
+      min-height: 80px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #555;
+    }
+    .notes-box .title {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .totals-box {
+      border: 1px solid #ddd;
+      padding: 0;
+    }
+    .totals-box .t-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 12px;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+    }
+    .totals-box .t-row:last-child {
+      border-bottom: none;
+      background: #f7f6f4;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .pay-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .pay-box, .note-box {
+      border: 1px solid #ddd;
+      padding: 12px 14px;
+    }
+    .pay-box .title, .note-box .title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .pay-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .pay-check .box {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid #555;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+    .pay-check .box.on {
+      background: #333;
+      color: #fff;
+      border-color: #333;
+    }
+    .sign-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 36px;
+      padding-top: 8px;
+    }
+    .sign-block {
+      text-align: center;
+      font-size: 13px;
+    }
+    .sign-line {
+      border-bottom: 1px solid #333;
+      height: 40px;
+      margin-bottom: 6px;
+    }
+    .sign-block .role {
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .sign-block .date-line {
+      margin-top: 16px;
+      color: #555;
+    }
+    .receipt-actions {
+      max-width: 800px;
+      margin: 20px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .receipt-empty {
+      text-align: center;
+      padding: 80px 20px;
+      background: #fff;
+      border-radius: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .company-footer {
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px dashed #ccc;
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+    }
+    @media print {
+      body { background: #fff; }
+      header, .receipt-actions, .no-print { display: none !important; }
+      .receipt-page { padding: 0; background: #fff; }
+      .receipt-paper { box-shadow: none; border: none; max-width: 100%; padding: 20px; }
+    }
+    @media (max-width: 700px) {
+      .receipt-paper { padding: 20px 16px; }
+      .info-grid, .summary-block, .pay-section, .sign-section {
+        grid-template-columns: 1fr;
+      }
+      .receipt-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="no-print">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="image/logo.png" alt="Aura Beauty" class="logo-img" />
+        <div class="logo-text">
+          <strong>AURA BEAUTY</strong>
+          <span>ออร่า บิวตี้</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <span class="nav-indicator" id="navIndicator"></span>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="products.html">สินค้า</a></li>
+        <li><a href="cart.html">ตะกร้า</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
+      </ul>
+      <a href="cart.html" class="cart-link">🛒<span class="cart-badge">0</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="เมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="receipt-page">
+    <div id="receiptRoot"></div>
+  </section>
+
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function fmt(n) {
+      return Number(n).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderReceipt() {
+      const root = document.getElementById('receiptRoot');
+      let order = null;
+      try {
+        order = JSON.parse(localStorage.getItem('aura_last_order'));
+      } catch (e) {}
+
+      if (!order || !order.items || !order.items.length) {
+        root.innerHTML = '<div class="receipt-empty"><h1 style="font-family:Playfair Display,serif;margin-bottom:12px;">ไม่พบใบเสร็จ</h1><p style="color:#666;margin-bottom:24px;">ยังไม่มีรายการสั่งซื้อ หรือใบเสร็จหมดอายุแล้ว</p><a href="products.html" class="btn btn-primary">เลือกสินค้า</a></div>';
+        return;
+      }
+
+      document.title = 'ใบเสร็จ ' + order.orderId + ' | Aura Beauty';
+
+      const subtotal = order.total;
+      const vatRate = 0.07;
+      const vat = Math.round(subtotal * vatRate * 100) / 100;
+      const grand = subtotal + vat;
+      const method = order.method || 'promptpay';
+      const isCod = method === 'cod' || order.status === 'cod';
+      const statusText = isCod ? 'รอชำระปลายทาง' : 'ชำระแล้ว';
+      const statusColor = isCod ? '#e65100' : '#1b5e20';
+      const successText = isCod
+        ? '✓ ยืนยันออเดอร์แล้ว — ชำระเงินเมื่อได้รับสินค้า'
+        : '✓ ชำระเงินสำเร็จ / Payment Successful';
+
+      const rows = order.items.map(function(item, i) {
+        return '<tr>' +
+          '<td class="num">' + (i + 1) + '</td>' +
+          '<td class="left">' + item.name + '</td>' +
+          '<td class="num">' + item.qty + '</td>' +
+          '<td class="right">' + fmt(item.price) + '</td>' +
+          '<td class="right">' + fmt(item.subtotal) + '</td>' +
+        '</tr>';
+      }).join('');
+
+      function check(m) {
+        return method === m ? '<span class="box on">✓</span>' : '<span class="box"></span>';
+      }
+
+      root.innerHTML =
+        '<div class="receipt-paper" id="receiptPrint">' +
+          '<div class="receipt-top">' +
+            '<div class="receipt-brand">' +
+              '<img src="image/logo.png" alt="Aura Beauty" />' +
+              '<div>' +
+                '<h1>ใบเสร็จรับเงิน</h1>' +
+                '<div class="sub">Receipt</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="receipt-logo-side"><img src="image/logo.png" alt="" /></div>' +
+          '</div>' +
+
+          '<div class="success-bar" style="' + (isCod ? 'background:#fff3e0;color:#e65100;' : '') + '">' + successText + '</div>' +
+
+          '<div class="info-grid">' +
+            '<div>' +
+              '<div class="row"><span class="label">ชื่อลูกค้า</span><span class="value">' + order.customer.name + '</span></div>' +
+              '<div class="row"><span class="label">ที่อยู่</span><span class="value">' + order.customer.address + '</span></div>' +
+              '<div class="row"><span class="label">เบอร์โทรศัพท์</span><span class="value">' + order.customer.phone + '</span></div>' +
+              (order.customer.email ? '<div class="row"><span class="label">อีเมล</span><span class="value">' + order.customer.email + '</span></div>' : '') +
+            '</div>' +
+            '<div>' +
+              '<div class="row"><span class="label">เลขที่</span><span class="value"><strong>' + order.orderId + '</strong></span></div>' +
+              '<div class="row"><span class="label">วันที่</span><span class="value">' + order.dateDisplay + '</span></div>' +
+              '<div class="row"><span class="label">ผู้ออก</span><span class="value">บริษัท ออร่า บิวตี้ จำกัด</span></div>' +
+              '<div class="row"><span class="label">สถานะ</span><span class="value" style="color:' + statusColor + ';font-weight:600;">' + statusText + '</span></div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="section-title">รายการสินค้า</div>' +
+          '<table class="items-table">' +
+            '<thead>' +
+              '<tr>' +
+                '<th style="width:48px;">ลำดับ</th>' +
+                '<th>รายการสินค้า</th>' +
+                '<th style="width:70px;">จำนวน</th>' +
+                '<th style="width:100px;">ราคา/หน่วย</th>' +
+                '<th style="width:100px;">ราคารวม</th>' +
+              '</tr>' +
+            '</thead>' +
+            '<tbody>' + rows + '</tbody>' +
+          '</table>' +
+
+          '<div class="summary-block">' +
+            '<div class="notes-box">' +
+              '<div class="title">หมายเหตุ</div>' +
+              '<div>' + (order.customer.note || '—') + '</div>' +
+            '</div>' +
+            '<div class="totals-box">' +
+              '<div class="t-row"><span>ราคารวม</span><span>' + fmt(subtotal) + '</span></div>' +
+              '<div class="t-row"><span>ภาษีมูลค่าเพิ่ม (7%)</span><span>' + fmt(vat) + '</span></div>' +
+              '<div class="t-row"><span>ส่วนลด</span><span>0.00</span></div>' +
+              '<div class="t-row"><span>จำนวนเงินรวมทั้งสิ้น</span><span>' + fmt(grand) + ' บาท</span></div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="pay-section">' +
+            '<div class="pay-box">' +
+              '<div class="title">การชำระเงิน</div>' +
+              '<div class="pay-check">' + check('promptpay') + ' PromptPay</div>' +
+              '<div class="pay-check">' + check('card') + ' บัตรเครดิต / บัตรเดบิต</div>' +
+              '<div class="pay-check">' + check('transfer') + ' โอนผ่านบัญชีธนาคาร</div>' +
+              '<div class="pay-check">' + check('cod') + ' ชำระปลายทาง (COD)</div>' +
+            '</div>' +
+            '<div class="note-box">' +
+              '<div class="title">ช่องทางที่เลือก</div>' +
+              '<div style="font-size:14px;font-weight:600;">' + (order.methodLabel || method) + '</div>' +
+              '<div style="margin-top:8px;color:#666;font-size:12px;">อ้างอิงเลขที่ใบเสร็จ: ' + order.orderId + '</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="sign-section">' +
+            '<div class="sign-block">' +
+              '<div class="sign-line"></div>' +
+              '<div class="role">ผู้รับเงิน</div>' +
+              '<div>(................................)</div>' +
+              '<div class="date-line">วันที่ ........../........../..........</div>' +
+            '</div>' +
+            '<div class="sign-block">' +
+              '<div class="sign-line"></div>' +
+              '<div class="role">ผู้ชำระ</div>' +
+              '<div>(' + order.customer.name + ')</div>' +
+              '<div class="date-line">วันที่ ........../........../..........</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="company-footer">' +
+            'บริษัท ออร่า บิวตี้ จำกัด · Aura Beauty Co., Ltd.<br/>' +
+            'ขอบคุณที่ใช้บริการ · Thank you for your purchase' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="receipt-actions no-print">' +
+          '<button type="button" class="btn btn-primary" onclick="window.print()">พิมพ์ใบเสร็จ</button>' +
+          '<a href="products.html" class="btn btn-outline">เลือกซื้อต่อ</a>' +
+          '<a href="index.html" class="btn btn-outline">หน้าแรก</a>' +
+        '</div>';
+    }
+
+    document.addEventListener('DOMContentLoaded', renderReceipt);
+  </script>
+</body>
+</html>

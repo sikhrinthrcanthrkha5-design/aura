@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ตะกร้าสินค้า | Aura Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="image/logo.png" alt="Aura Beauty" class="logo-img" />
+        <div class="logo-text">
+          <strong>AURA BEAUTY</strong>
+          <span>ออร่า บิวตี้</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <span class="nav-indicator" id="navIndicator"></span>
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="about.html" data-i18n="nav_about">เกี่ยวกับเรา</a></li>
+        <li><a href="products.html" data-i18n="nav_products">สินค้า</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">บทความ</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">ติดต่อเรา</a></li>
+      </ul>
+<a href="cart.html" class="cart-link" title="Cart">🛒<span class="cart-badge">0</span></a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav_inquiry">สอบถามสินค้า</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="เมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="label">Cart</div>
+      <h1 data-i18n="cart_title">ตะกร้าสินค้า</h1>
+    </div>
+  </section>
+
+  <section class="contact" style="padding-top:40px;">
+    <div class="container">
+      <div id="cartEmpty" class="cart-empty-box" style="display:none;">
+        <p style="font-size:1.2rem;" data-i18n="cart_empty">ยังไม่มีสินค้าในตะกร้า</p>
+        <a href="products.html" class="btn btn-primary" data-i18n="cart_continue">เลือกสินค้าต่อ</a>
+      </div>
+
+      <div class="cart-layout" id="cartSummary" style="display:none;">
+        <div>
+          <div id="cartItems"></div>
+          <button type="button" class="btn btn-outline" style="margin-top:20px;" onclick="clearCart()" data-i18n="cart_clear">ล้างตะกร้า</button>
+        </div>
+        <div class="cart-summary">
+          <h3>ชำระเงิน</h3>
+          <div class="cart-total-row">
+            <span data-i18n="cart_total">ยอดรวม</span>
+            <strong id="cartTotalAmount">฿0</strong>
+          </div>
+          <form id="checkoutForm" onsubmit="processPayment(event)">
+            <div class="form-group">
+              <label>ชื่อ-นามสกุล *</label>
+              <input type="text" id="orderName" required placeholder="ชื่อ-นามสกุล" />
+            </div>
+            <div class="form-group">
+              <label>เบอร์โทร *</label>
+              <input type="tel" id="orderPhone" required placeholder="08X-XXX-XXXX" />
+            </div>
+            <div class="form-group">
+              <label>อีเมล</label>
+              <input type="email" id="orderEmail" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label>ที่อยู่จัดส่ง *</label>
+              <textarea id="orderAddress" rows="2" required placeholder="บ้านเลขที่ ถนน แขวง/ตำบล เขต/อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
+            </div>
+            <div class="form-group">
+              <label>หมายเหตุ</label>
+              <textarea id="orderNote" rows="2" placeholder="ข้อความเพิ่มเติม (ถ้ามี)"></textarea>
+            </div>
+
+            <p style="font-size:13px;font-weight:600;margin:16px 0 10px;color:#333;">เลือกช่องทางชำระเงิน</p>
+            <div class="pay-methods" id="payMethods">
+              <label class="pay-option">
+                <input type="radio" name="payMethod" value="promptpay" checked />
+                <span class="pay-option-box">
+                  <span class="pay-icon">📱</span>
+                  <span><strong>PromptPay</strong><small>สแกน QR ชำระทันที</small></span>
+                </span>
+              </label>
+              <label class="pay-option">
+                <input type="radio" name="payMethod" value="transfer" />
+                <span class="pay-option-box">
+                  <span class="pay-icon">🏦</span>
+                  <span><strong>โอนผ่านธนาคาร</strong><small>กสิกร / ไทยพาณิชย์ / กรุงไทย</small></span>
+                </span>
+              </label>
+              <label class="pay-option">
+                <input type="radio" name="payMethod" value="card" />
+                <span class="pay-option-box">
+                  <span class="pay-icon">💳</span>
+                  <span><strong>บัตรเครดิต / เดบิต</strong><small>Visa, Mastercard</small></span>
+                </span>
+              </label>
+              <label class="pay-option">
+                <input type="radio" name="payMethod" value="cod" />
+                <span class="pay-option-box">
+                  <span class="pay-icon">📦</span>
+                  <span><strong>ชำระปลายทาง (COD)</strong><small>จ่ายเมื่อได้รับสินค้า</small></span>
+                </span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary pay-submit-btn" id="payBtn">
+              ชำระเงิน ฿<span id="payBtnAmount">0</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:0;">
+        <p data-i18n="footer_rights">© 2026 บริษัท ออร่า บิวตี้ จำกัด สงวนลิขสิทธิ์</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="stock.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    document.querySelectorAll('input[name="payMethod"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        var btn = document.getElementById('payBtn');
+        var amt = document.getElementById('payBtnAmount');
+        var total = amt ? amt.textContent : '0';
+        if (!btn) return;
+        if (this.value === 'cod') {
+          btn.innerHTML = 'ยืนยันออเดอร์ ฿' + total + ' <small style="opacity:0.85">(ชำระปลายทาง)</small>';
+        } else {
+          btn.innerHTML = 'ชำระเงิน ฿' + total;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

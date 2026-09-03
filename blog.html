@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทความ | Aura Beauty – ออร่า บิวตี้</title>
+  <meta name="description" content="เคล็ดลับแต่งหน้าและดูแลผิวจาก ออร่า บิวตี้" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="image/logo.png" alt="Aura Beauty" class="logo-img" />
+        <div class="logo-text">
+          <strong>AURA BEAUTY</strong>
+          <span>ออร่า บิวตี้</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <span class="nav-indicator" id="navIndicator"></span>
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="about.html" data-i18n="nav_about">เกี่ยวกับเรา</a></li>
+        <li><a href="products.html" data-i18n="nav_products">สินค้า</a></li>
+        <li><a href="blog.html" class="active" data-i18n="nav_blog">บทความ</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">ติดต่อเรา</a></li>
+      </ul>
+<a href="cart.html" class="cart-link" title="Cart">🛒<span class="cart-badge">0</span></a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav_inquiry">สอบถามสินค้า</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="เมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="label">Blog</div>
+      <h1 data-i18n="blog_title">บทความ</h1>
+      <p data-i18n="blog_desc">เคล็ดลับแต่งหน้าและดูแลผิวจาก ออร่า บิวตี้</p>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="container">
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-card-img">💄</div>
+          <div class="blog-card-body">
+            <div class="date">15 ส.ค. 2026</div>
+            <h3>5 ขั้นตอนแต่งหน้าโทนธรรมชาติ</h3>
+            <p>ลุคธรรมชาติที่ดูสุขภาพดี ใช้เวลาไม่นาน เหมาะกับใช้ทุกวัน</p>
+            <a href="blog-natural-makeup.html">อ่านต่อ →</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card-img">✨</div>
+          <div class="blog-card-body">
+            <div class="date">10 ส.ค. 2026</div>
+            <h3>เลือกสกินแคร์ให้ถูกกับสภาพผิว</h3>
+            <p>ผิวแห้ง ผิวมัน หรือผิวผสม ควรเริ่มจากอะไร และใช้อะไรบ้าง</p>
+            <a href="blog-skincare.html">อ่านต่อ →</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card-img">🖌️</div>
+          <div class="blog-card-body">
+            <div class="date">5 ส.ค. 2026</div>
+            <h3>ดูแลแปรงแต่งหน้าให้สะอาด</h3>
+            <p>วิธีล้างแปรงที่ถูกต้อง ช่วยให้เครื่องสำอางติดทนและผิวไม่ระคายเคือง</p>
+            <a href="blog-brush-care.html">อ่านต่อ →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:0;">
+        <p data-i18n="footer_rights">© 2026 บริษัท ออร่า บิวตี้ จำกัด สงวนลิขสิทธิ์</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

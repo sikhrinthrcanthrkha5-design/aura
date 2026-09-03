@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>สินค้า | Aura Beauty – ออร่า บิวตี้</title>
+  <meta name="description" content="สินค้าเครื่องสำอางและสกินแคร์คุณภาพสูงจาก ออร่า บิวตี้ ครบทุกประเภท" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+      <header id="header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="image/logo.png" alt="Aura Beauty" class="logo-img" />
+        <div class="logo-text">
+          <strong>AURA BEAUTY</strong>
+          <span>ออร่า บิวตี้</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <span class="nav-indicator" id="navIndicator"></span>
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="about.html" data-i18n="nav_about">เกี่ยวกับเรา</a></li>
+        <li><a href="products.html" class="active" data-i18n="nav_products">สินค้า</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">บทความ</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">ติดต่อเรา</a></li>
+      </ul>
+<a href="cart.html" class="cart-link" title="Cart">🛒<span class="cart-badge">0</span></a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav_inquiry">สอบถามสินค้า</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="เมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="label">Our Products</div>
+      <h1>สินค้าทั้งหมด</h1>
+      <p>เครื่องสำอางและสกินแคร์คุณภาพที่คัดสรรมาเพื่อคุณ</p>
+    </div>
+  </section>
+
+  <section class="categories" style="padding-bottom: 20px;">
+    <div class="container">
+      <div class="cat-grid cat-filter">
+        <button class="cat-card cat-btn active" data-cat="all">
+          <div class="cat-icon">✨</div>
+          <h3>ทั้งหมด</h3>
+          <p>19 รายการ</p>
+        </button>
+        <button class="cat-card cat-btn" data-cat="brush">
+          <div class="cat-icon">🖌️</div>
+          <h3>แปรงแต่งหน้า</h3>
+          <p>3 รายการ</p>
+        </button>
+        <button class="cat-card cat-btn" data-cat="eyeliner">
+          <div class="cat-icon">👁️</div>
+          <h3>อายไลเนอร์</h3>
+          <p>3 รายการ</p>
+        </button>
+        <button class="cat-card cat-btn" data-cat="foundation">
+          <div class="cat-icon">🧴</div>
+          <h3>รองพื้น</h3>
+          <p>3 รายการ</p>
+        </button>
+        <button class="cat-card cat-btn" data-cat="blush">
+          <div class="cat-icon">🌸</div>
+          <h3>บลัชออน</h3>
+          <p>3 รายการ</p>
+        </button>
+        <button class="cat-card cat-btn" data-cat="powder">
+          <div class="cat-icon">💿</div>
+          <h3>แป้ง & คุชชั่น</h3>
+          <p>3 รายการ</p>
+        </button>
+        <button class="cat-card cat-btn" data-cat="lipstick">
+          <div class="cat-icon">💄</div>
+          <h3>ลิปสติก</h3>
+          <p>4 รายการ</p>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">All Products</div>
+        <h2 id="catTitle">สินค้าทั้งหมด</h2>
+        <div class="divider"></div>
+      </div>
+
+      
+      <div class="product-toolbar">
+        <div class="search-box">
+          <input type="search" id="productSearch" data-i18n-placeholder="search_placeholder" placeholder="ค้นหาสินค้า..." />
+        </div>
+        <div class="price-filter" id="priceFilter">
+          <button type="button" class="active" data-price="all" data-i18n="price_all">ทุกราคา</button>
+          <button type="button" data-price="low" data-i18n="price_low">ต่ำกว่า ฿300</button>
+          <button type="button" data-price="mid" data-i18n="price_mid">฿300 – ฿800</button>
+          <button type="button" data-price="high" data-i18n="price_high">มากกว่า ฿800</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card" data-cat="brush" data-price="4990" data-id="p01" data-name="Chanel Makeup Brush Set" data-image="image/product-01.png">
+          <div class="product-img"><a href="product.html?id=p01"><img src="image/product-01.png" alt="Chanel Makeup Brush Set" />
+            <span class="product-badge">พรีเมียม</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แปรงแต่งหน้า</span>
+            <h3 data-name-th="Chanel Makeup Brush Set" data-name-en="Chanel Makeup Brush Set"><a href="product.html?id=p01" style="color:inherit;">Chanel Makeup Brush Set</a></h3>
+            <p data-desc-th="ชุดแปรงแต่งหน้าพรีเมียม พร้อมกระเป๋าผ้ากำมะหยี่หรูหรา ขนแปรงนุ่ม เกลี่ยง่าย เหมาะสำหรับงานแต่งหน้ามืออาชีพและใช้ประจำวัน" data-desc-en="Premium makeup brush set with luxurious velvet pouch. Soft bristles for seamless blending — ideal for pro and everyday use.">ชุดแปรงแต่งหน้าพรีเมียม พร้อมกระเป๋าผ้ากำมะหยี่หรูหรา ขนแปรงนุ่ม เกลี่ยง่าย เหมาะสำหรับงานแต่งหน้ามืออาชีพและใช้ประจำวัน</p>
+            <div class="product-meta">
+              <span class="product-price">฿4,990</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p01',name:'Chanel Makeup Brush Set',price:4990,image:'image/product-01.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="brush" data-price="590" data-id="p02" data-name="Pink Makeup Brush Set" data-image="image/product-02.jpg">
+          <div class="product-img"><a href="product.html?id=p02"><img src="image/product-02.jpg" alt="Pink Makeup Brush Set" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แปรงแต่งหน้า</span>
+            <h3 data-name-th="Pink Makeup Brush Set" data-name-en="Pink Makeup Brush Set"><a href="product.html?id=p02" style="color:inherit;">Pink Makeup Brush Set</a></h3>
+            <p data-desc-th="ชุดแปรงแต่งหน้าสีชมพู 7 ชิ้น พร้อมกระเป๋าซิปพกพาสะดวก ครบทั้งแปรงใหญ่และแปรงตา" data-desc-en="7-piece pink brush set with zip case. Includes face and eye brushes for complete makeup.">ชุดแปรงแต่งหน้าสีชมพู 7 ชิ้น พร้อมกระเป๋าซิปพกพาสะดวก ครบทั้งแปรงใหญ่และแปรงตา</p>
+            <div class="product-meta">
+              <span class="product-price">฿590</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p02',name:'Pink Makeup Brush Set',price:590,image:'image/product-02.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="brush" data-price="790" data-id="p03" data-name="Konvy Soft Brush Set" data-image="image/product-03.jpg">
+          <div class="product-img"><a href="product.html?id=p03"><img src="image/product-03.jpg" alt="Konvy Soft Brush Set" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แปรงแต่งหน้า</span>
+            <h3 data-name-th="Konvy Soft Brush Set" data-name-en="Konvy Soft Brush Set"><a href="product.html?id=p03" style="color:inherit;">Konvy Soft Brush Set</a></h3>
+            <p data-desc-th="ชุดแปรงแต่งหน้าโทนชมพูนู้ด นุ่มนวล พร้อมซองหนังสวยหรู ให้ลุคดูแพง" data-desc-en="Soft nude-pink brushes with elegant leather case. Luxury look and feel.">ชุดแปรงแต่งหน้าโทนชมพูนู้ด นุ่มนวล พร้อมซองหนังสวยหรู ให้ลุคดูแพง</p>
+            <div class="product-meta">
+              <span class="product-price">฿790</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p03',name:'Konvy Soft Brush Set',price:790,image:'image/product-03.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="199" data-id="p04" data-name="Lock & Wing Hyper Stay Eyeliner" data-image="image/product-04.png">
+          <div class="product-img"><a href="product.html?id=p04"><img src="image/product-04.png" alt="Lock & Wing Hyper Stay Eyeliner" />
+            <span class="product-badge">ใหม่</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="Lock & Wing Hyper Stay Eyeliner" data-name-en="Lock & Wing Hyper Stay Eyeliner"><a href="product.html?id=p04" style="color:inherit;">Lock & Wing Hyper Stay Eyeliner</a></h3>
+            <p data-desc-th="อายไลเนอร์หัวพู่กัน ติดทนนาน สีดำสนิท กันน้ำ เขียนง่าย ไม่เลอะ" data-desc-en="Long-wear waterproof liquid eyeliner with brush tip. Deep black, smudge-proof.">อายไลเนอร์หัวพู่กัน ติดทนนาน สีดำสนิท กันน้ำ เขียนง่าย ไม่เลอะ</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p04',name:'Lock & Wing Hyper Stay Eyeliner',price:199,image:'image/product-04.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="159" data-id="p05" data-name="Cathy Doll Cute Press Gel Eyeliner" data-image="image/product-05.jpg">
+          <div class="product-img"><a href="product.html?id=p05"><img src="image/product-05.jpg" alt="Cathy Doll Cute Press Gel Eyeliner" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="Cathy Doll Cute Press Gel Eyeliner" data-name-en="Cathy Doll Cute Press Gel Eyeliner"><a href="product.html?id=p05" style="color:inherit;">Cathy Doll Cute Press Gel Eyeliner</a></h3>
+            <p data-desc-th="เจลอายไลเนอร์เนื้อเนียน กันน้ำ มาพร้อมปลายสปันจ์เบลนด์ สำหรับลุคสโมกกี้" data-desc-en="Waterproof gel eyeliner with blend sponge tip for soft smoky looks.">เจลอายไลเนอร์เนื้อเนียน กันน้ำ มาพร้อมปลายสปันจ์เบลนด์ สำหรับลุคสโมกกี้</p>
+            <div class="product-meta">
+              <span class="product-price">฿159</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p05',name:'Cathy Doll Cute Press Gel Eyeliner',price:159,image:'image/product-05.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="890" data-id="p06" data-name="HERA Liquid Eyeliner" data-image="image/product-06.jpg">
+          <div class="product-img"><a href="product.html?id=p06"><img src="image/product-06.jpg" alt="HERA Liquid Eyeliner" />
+            <span class="product-badge">แนะนำ</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="HERA Liquid Eyeliner" data-name-en="HERA Liquid Eyeliner"><a href="product.html?id=p06" style="color:inherit;">HERA Liquid Eyeliner</a></h3>
+            <p data-desc-th="อายไลเนอร์เหลวหัวพู่กันคมชัด จากเกาหลี ติดทนทั้งวัน ไม่เลอะง่าย" data-desc-en="Korean liquid eyeliner with precise brush tip. Long-lasting, smudge-resistant.">อายไลเนอร์เหลวหัวพู่กันคมชัด จากเกาหลี ติดทนทั้งวัน ไม่เลอะง่าย</p>
+            <div class="product-meta">
+              <span class="product-price">฿890</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p06',name:'HERA Liquid Eyeliner',price:890,image:'image/product-06.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="foundation" data-price="245" data-id="p07" data-name="Maybelline Fit Me Matte + Poreless" data-image="image/product-07.jpg">
+          <div class="product-img"><a href="product.html?id=p07"><img src="image/product-07.jpg" alt="Maybelline Fit Me Matte + Poreless" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">รองพื้น</span>
+            <h3 data-name-th="Maybelline Fit Me Matte + Poreless" data-name-en="Maybelline Fit Me Matte + Poreless"><a href="product.html?id=p07" style="color:inherit;">Maybelline Fit Me Matte + Poreless</a></h3>
+            <p data-desc-th="รองพื้นเนื้อแมท คุมมัน ปกปิดรูขุมขน SPF22 โทน 120 เหมาะกับผิวมัน–ผสม" data-desc-en="Matte foundation that controls oil and blurs pores. SPF22 shade 120.">รองพื้นเนื้อแมท คุมมัน ปกปิดรูขุมขน SPF22 โทน 120 เหมาะกับผิวมัน–ผสม</p>
+            <div class="product-meta">
+              <span class="product-price">฿245</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p07',name:'Maybelline Fit Me Matte + Poreless',price:245,image:'image/product-07.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="foundation" data-price="299" data-id="p08" data-name="Beauty Infinity Double Lasting Foundation" data-image="image/product-08.jpg">
+          <div class="product-img"><a href="product.html?id=p08"><img src="image/product-08.jpg" alt="Beauty Infinity Double Lasting Foundation" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">รองพื้น</span>
+            <h3 data-name-th="Beauty Infinity Double Lasting Foundation" data-name-en="Beauty Infinity Double Lasting Foundation"><a href="product.html?id=p08" style="color:inherit;">Beauty Infinity Double Lasting Foundation</a></h3>
+            <p data-desc-th="รองพื้นปกปิดแน่น ติดทนนาน เนื้อเนียนเรียบ ให้ผิวดูสมบูรณ์แบบ" data-desc-en="Full-coverage long-lasting foundation with smooth, even finish.">รองพื้นปกปิดแน่น ติดทนนาน เนื้อเนียนเรียบ ให้ผิวดูสมบูรณ์แบบ</p>
+            <div class="product-meta">
+              <span class="product-price">฿299</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p08',name:'Beauty Infinity Double Lasting Foundation',price:299,image:'image/product-08.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="foundation" data-price="329" data-id="p09" data-name="Maybelline Super Stay Lumi-Matte" data-image="image/product-09.jpg">
+          <div class="product-img"><a href="product.html?id=p09"><img src="image/product-09.jpg" alt="Maybelline Super Stay Lumi-Matte" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">รองพื้น</span>
+            <h3 data-name-th="Maybelline Super Stay Lumi-Matte" data-name-en="Maybelline Super Stay Lumi-Matte"><a href="product.html?id=p09" style="color:inherit;">Maybelline Super Stay Lumi-Matte</a></h3>
+            <p data-desc-th="รองพื้นติดทนสูงสุด 30 ชม. เนื้อลูมิ-แมท SPF16 โทน 115 ให้ผิวโกลว์แบบแมท" data-desc-en="Up to 30-hour wear lumi-matte foundation. SPF16 shade 115.">รองพื้นติดทนสูงสุด 30 ชม. เนื้อลูมิ-แมท SPF16 โทน 115 ให้ผิวโกลว์แบบแมท</p>
+            <div class="product-meta">
+              <span class="product-price">฿329</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p09',name:'Maybelline Super Stay Lumi-Matte',price:329,image:'image/product-09.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="199" data-id="p10" data-name="LA GLACE Baebie Vibes – Hot Pink" data-image="image/product-10.jpg">
+          <div class="product-img"><a href="product.html?id=p10"><img src="image/product-10.jpg" alt="LA GLACE Baebie Vibes – Hot Pink" />
+            <span class="product-badge">ใหม่</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="LA GLACE Baebie Vibes – Hot Pink" data-name-en="LA GLACE Baebie Vibes – Hot Pink"><a href="product.html?id=p10" style="color:inherit;">LA GLACE Baebie Vibes – Hot Pink</a></h3>
+            <p data-desc-th="บลัชออนเนื้อซาติน สีชมพูสดใส ให้ลุคสดใสมีชีวิตชีวา เกลี่ยง่าย" data-desc-en="Satin hot pink blush for a fresh, vibrant look. Easy to blend.">บลัชออนเนื้อซาติน สีชมพูสดใส ให้ลุคสดใสมีชีวิตชีวา เกลี่ยง่าย</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p10',name:'LA GLACE Baebie Vibes – Hot Pink',price:199,image:'image/product-10.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="199" data-id="p11" data-name="LA GLACE Baebie Vibes – Black" data-image="image/product-11.jpg">
+          <div class="product-img"><a href="product.html?id=p11"><img src="image/product-11.jpg" alt="LA GLACE Baebie Vibes – Black" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="LA GLACE Baebie Vibes – Black" data-name-en="LA GLACE Baebie Vibes – Black"><a href="product.html?id=p11" style="color:inherit;">LA GLACE Baebie Vibes – Black</a></h3>
+            <p data-desc-th="บลัช/ไฮไลท์โทนดำเงา สำหรับลุคสโมกกี้และแต่งหน้าพิเศษ" data-desc-en="Black shimmer blush/highlighter for smoky and special looks.">บลัช/ไฮไลท์โทนดำเงา สำหรับลุคสโมกกี้และแต่งหน้าพิเศษ</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p11',name:'LA GLACE Baebie Vibes – Black',price:199,image:'image/product-11.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="199" data-id="p12" data-name="LA GLACE Baebie Vibes – Soft Pink" data-image="image/product-12.jpg">
+          <div class="product-img"><a href="product.html?id=p12"><img src="image/product-12.jpg" alt="LA GLACE Baebie Vibes – Soft Pink" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="LA GLACE Baebie Vibes – Soft Pink" data-name-en="LA GLACE Baebie Vibes – Soft Pink"><a href="product.html?id=p12" style="color:inherit;">LA GLACE Baebie Vibes – Soft Pink</a></h3>
+            <p data-desc-th="บลัชออนสีชมพูนู้ดอ่อน เนื้อเนียน เกลี่ยง่าย เหมาะกับทุกโทนผิว" data-desc-en="Soft nude-pink blush. Smooth, blendable, suits all skin tones.">บลัชออนสีชมพูนู้ดอ่อน เนื้อเนียน เกลี่ยง่าย เหมาะกับทุกโทนผิว</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p12',name:'LA GLACE Baebie Vibes – Soft Pink',price:199,image:'image/product-12.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="149" data-id="p13" data-name="Bhaesaj Compact Powder" data-image="image/product-13.jpg">
+          <div class="product-img"><a href="product.html?id=p13"><img src="image/product-13.jpg" alt="Bhaesaj Compact Powder" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Bhaesaj Compact Powder" data-name-en="Bhaesaj Compact Powder"><a href="product.html?id=p13" style="color:inherit;">Bhaesaj Compact Powder</a></h3>
+            <p data-desc-th="แป้งพัฟคุมมัน เนื้อเนียน ปกปิดเรียบเนียน มีกระจกในตลับ พกพาสะดวก" data-desc-en="Oil-control compact powder with mirror. Smooth coverage, portable.">แป้งพัฟคุมมัน เนื้อเนียน ปกปิดเรียบเนียน มีกระจกในตลับ พกพาสะดวก</p>
+            <div class="product-meta">
+              <span class="product-price">฿149</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p13',name:'Bhaesaj Compact Powder',price:149,image:'image/product-13.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="179" data-id="p14" data-name="About U Compact Powder" data-image="image/product-14.jpg">
+          <div class="product-img"><a href="product.html?id=p14"><img src="image/product-14.jpg" alt="About U Compact Powder" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="About U Compact Powder" data-name-en="About U Compact Powder"><a href="product.html?id=p14" style="color:inherit;">About U Compact Powder</a></h3>
+            <p data-desc-th="แป้งพัฟเนื้อละเอียด คุมมันยาวนาน พร้อมกระจกในตลับ ให้ผิวแมทสวย" data-desc-en="Fine compact powder with long oil control and mirror. Matte finish.">แป้งพัฟเนื้อละเอียด คุมมันยาวนาน พร้อมกระจกในตลับ ให้ผิวแมทสวย</p>
+            <div class="product-meta">
+              <span class="product-price">฿179</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p14',name:'About U Compact Powder',price:179,image:'image/product-14.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="349" data-id="p15" data-name="Beauty Infinity Everyday Cushion SPF50" data-image="image/product-15.jpg">
+          <div class="product-img"><a href="product.html?id=p15"><img src="image/product-15.jpg" alt="Beauty Infinity Everyday Cushion SPF50" />
+            <span class="product-badge">แนะนำ</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Beauty Infinity Everyday Cushion SPF50" data-name-en="Beauty Infinity Everyday Cushion SPF50"><a href="product.html?id=p15" style="color:inherit;">Beauty Infinity Everyday Cushion SPF50</a></h3>
+            <p data-desc-th="คุชชั่นปกปิดเนียนกริบ กันแดด SPF50 PA+++ ใช้ได้ทุกวัน เนื้อบางเบา" data-desc-en="Everyday cushion with SPF50 PA+++. Light coverage, natural finish.">คุชชั่นปกปิดเนียนกริบ กันแดด SPF50 PA+++ ใช้ได้ทุกวัน เนื้อบางเบา</p>
+            <div class="product-meta">
+              <span class="product-price">฿349</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p15',name:'Beauty Infinity Everyday Cushion SPF50',price:349,image:'image/product-15.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="189" data-id="p16" data-name="Giffarine Lipstick – Magenta" data-image="image/product-16.jpg">
+          <div class="product-img"><a href="product.html?id=p16"><img src="image/product-16.jpg" alt="Giffarine Lipstick – Magenta" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Giffarine Lipstick – Magenta" data-name-en="Giffarine Lipstick – Magenta"><a href="product.html?id=p16" style="color:inherit;">Giffarine Lipstick – Magenta</a></h3>
+            <p data-desc-th="ลิปสติกสีม่วงอมชมพู เนื้อครีมมี่ เม็ดสีแน่น ติดทน ให้ริมฝีปากดูอวบอิ่ม" data-desc-en="Creamy magenta lipstick. Pigmented, long-wear, full-looking lips.">ลิปสติกสีม่วงอมชมพู เนื้อครีมมี่ เม็ดสีแน่น ติดทน ให้ริมฝีปากดูอวบอิ่ม</p>
+            <div class="product-meta">
+              <span class="product-price">฿189</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p16',name:'Giffarine Lipstick – Magenta',price:189,image:'image/product-16.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="169" data-id="p17" data-name="Classic Red Lipstick" data-image="image/product-17.jpg">
+          <div class="product-img"><a href="product.html?id=p17"><img src="image/product-17.jpg" alt="Classic Red Lipstick" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Classic Red Lipstick" data-name-en="Classic Red Lipstick"><a href="product.html?id=p17" style="color:inherit;">Classic Red Lipstick</a></h3>
+            <p data-desc-th="ลิปสติกสีแดงคลาสสิก เนื้อเนียนนุ่ม ให้ลุคหรูหราและมั่นใจ" data-desc-en="Classic red creamy lipstick for an elegant, confident look.">ลิปสติกสีแดงคลาสสิก เนื้อเนียนนุ่ม ให้ลุคหรูหราและมั่นใจ</p>
+            <div class="product-meta">
+              <span class="product-price">฿169</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p17',name:'Classic Red Lipstick',price:169,image:'image/product-17.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="169" data-id="p18" data-name="Hot Pink Lipstick" data-image="image/product-18.jpg">
+          <div class="product-img"><a href="product.html?id=p18"><img src="image/product-18.jpg" alt="Hot Pink Lipstick" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Hot Pink Lipstick" data-name-en="Hot Pink Lipstick"><a href="product.html?id=p18" style="color:inherit;">Hot Pink Lipstick</a></h3>
+            <p data-desc-th="ลิปสติกสีชมพูสด เนื้อครีม เม็ดสีชัด ติดทนนาน สดใสมีชีวิตชีวา" data-desc-en="Bright hot pink creamy lipstick. Bold color, long-lasting.">ลิปสติกสีชมพูสด เนื้อครีม เม็ดสีชัด ติดทนนาน สดใสมีชีวิตชีวา</p>
+            <div class="product-meta">
+              <span class="product-price">฿169</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p18',name:'Hot Pink Lipstick',price:169,image:'image/product-18.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="189" data-id="p19" data-name="Giffarine Lipstick – Nude" data-image="image/product-19.jpg">
+          <div class="product-img"><a href="product.html?id=p19"><img src="image/product-19.jpg" alt="Giffarine Lipstick – Nude" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Giffarine Lipstick – Nude" data-name-en="Giffarine Lipstick – Nude"><a href="product.html?id=p19" style="color:inherit;">Giffarine Lipstick – Nude</a></h3>
+            <p data-desc-th="ลิปสติกโทนนู้ดน้ำตาล เนื้อเนียน เหมาะกับทุกโทนผิว ลุคสุภาพธรรมชาติ" data-desc-en="Nude-brown lipstick for all skin tones. Natural, polished look.">ลิปสติกโทนนู้ดน้ำตาล เนื้อเนียน เหมาะกับทุกโทนผิว ลุคสุภาพธรรมชาติ</p>
+            <div class="product-meta">
+              <span class="product-price">฿189</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p19',name:'Giffarine Lipstick – Nude',price:189,image:'image/product-19.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="1890" data-id="p20" data-name="Dior Lip Glow Oil – Coral" data-image="image/product-20.jpg">
+          <div class="product-img"><a href="product.html?id=p20"><img src="image/product-20.jpg" alt="Dior Lip Glow Oil – Coral" />
+            <span class="product-badge">พรีเมียม</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Dior Lip Glow Oil – Coral" data-name-en="Dior Lip Glow Oil – Coral"><a href="product.html?id=p20" style="color:inherit;">Dior Lip Glow Oil – Coral</a></h3>
+            <p data-desc-th="ลิปออยล์เนื้อเงาวาว สีคอรัลมีชิมเมอร์ บำรุงริมฝีปากให้อิ่มน้ำ" data-desc-en="Shimmering coral lip oil for glossy, nourished lips.">ลิปออยล์เนื้อเงาวาว สีคอรัลมีชิมเมอร์ บำรุงริมฝีปากให้อิ่มน้ำ</p>
+            <div class="product-meta">
+              <span class="product-price">฿1,890</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p20',name:'Dior Lip Glow Oil – Coral',price:1890,image:'image/product-20.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="1890" data-id="p21" data-name="Dior Lip Glow Oil – Soft Pink" data-image="image/product-21.jpg">
+          <div class="product-img"><a href="product.html?id=p21"><img src="image/product-21.jpg" alt="Dior Lip Glow Oil – Soft Pink" />
+            <span class="product-badge">พรีเมียม</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Dior Lip Glow Oil – Soft Pink" data-name-en="Dior Lip Glow Oil – Soft Pink"><a href="product.html?id=p21" style="color:inherit;">Dior Lip Glow Oil – Soft Pink</a></h3>
+            <p data-desc-th="ลิปออยล์สีชมพูอ่อน เนื้อใสเงา ให้ลุคธรรมชาติ" data-desc-en="Sheer soft pink lip oil with natural glossy finish.">ลิปออยล์สีชมพูอ่อน เนื้อใสเงา ให้ลุคธรรมชาติ</p>
+            <div class="product-meta">
+              <span class="product-price">฿1,890</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p21',name:'Dior Lip Glow Oil – Soft Pink',price:1890,image:'image/product-21.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="1650" data-id="p22" data-name="Dior Addict Lip Glow Balm" data-image="image/product-22.jpg">
+          <div class="product-img"><a href="product.html?id=p22"><img src="image/product-22.jpg" alt="Dior Addict Lip Glow Balm" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Dior Addict Lip Glow Balm" data-name-en="Dior Addict Lip Glow Balm"><a href="product.html?id=p22" style="color:inherit;">Dior Addict Lip Glow Balm</a></h3>
+            <p data-desc-th="ลิปบาล์มสีชมพูใส บำรุงและเพิ่มสีตาม pH ริมฝีปาก" data-desc-en="Color-reviving lip balm that adapts to your lips.">ลิปบาล์มสีชมพูใส บำรุงและเพิ่มสีตาม pH ริมฝีปาก</p>
+            <div class="product-meta">
+              <span class="product-price">฿1,650</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p22',name:'Dior Addict Lip Glow Balm',price:1650,image:'image/product-22.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="199" data-id="p23" data-name="Gentle Matte Collagen Lipstick #03 Starfish" data-image="image/product-23.jpg">
+          <div class="product-img"><a href="product.html?id=p23"><img src="image/product-23.jpg" alt="Gentle Matte Collagen Lipstick #03 Starfish" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Gentle Matte Collagen Lipstick #03 Starfish" data-name-en="Gentle Matte Collagen Lipstick #03 Starfish"><a href="product.html?id=p23" style="color:inherit;">Gentle Matte Collagen Lipstick #03 Starfish</a></h3>
+            <p data-desc-th="ลิปแมทเนื้อนุ่ม มีคอลลาเจน สีชมพูคอรัล #03 Starfish" data-desc-en="Soft matte collagen lipstick in coral pink #03 Starfish.">ลิปแมทเนื้อนุ่ม มีคอลลาเจน สีชมพูคอรัล #03 Starfish</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p23',name:'Gentle Matte Collagen Lipstick #03 Starfish',price:199,image:'image/product-23.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="1290" data-id="p24" data-name="Shiseido Lipstick – Soft Rose" data-image="image/product-24.jpg">
+          <div class="product-img"><a href="product.html?id=p24"><img src="image/product-24.jpg" alt="Shiseido Lipstick – Soft Rose" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Shiseido Lipstick – Soft Rose" data-name-en="Shiseido Lipstick – Soft Rose"><a href="product.html?id=p24" style="color:inherit;">Shiseido Lipstick – Soft Rose</a></h3>
+            <p data-desc-th="ลิปสติกชิเซโด้ สีชมพูโรส เนื้อเนียน ติดทน" data-desc-en="Shiseido soft rose lipstick with smooth long wear.">ลิปสติกชิเซโด้ สีชมพูโรส เนื้อเนียน ติดทน</p>
+            <div class="product-meta">
+              <span class="product-price">฿1,290</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p24',name:'Shiseido Lipstick – Soft Rose',price:1290,image:'image/product-24.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="329" data-id="p25" data-name="Maybelline Superstay Teddy Tint – Pink" data-image="image/product-25.jpg">
+          <div class="product-img"><a href="product.html?id=p25"><img src="image/product-25.jpg" alt="Maybelline Superstay Teddy Tint – Pink" />
+            <span class="product-badge">ใหม่</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Maybelline Superstay Teddy Tint – Pink" data-name-en="Maybelline Superstay Teddy Tint – Pink"><a href="product.html?id=p25" style="color:inherit;">Maybelline Superstay Teddy Tint – Pink</a></h3>
+            <p data-desc-th="ลิปทินท์เนื้อแมทนุ่ม สีชมพูตุ่น ติดทนสไตล์ Superstay" data-desc-en="Soft matte teddy tint in muted pink, long-lasting.">ลิปทินท์เนื้อแมทนุ่ม สีชมพูตุ่น ติดทนสไตล์ Superstay</p>
+            <div class="product-meta">
+              <span class="product-price">฿329</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p25',name:'Maybelline Superstay Teddy Tint – Pink',price:329,image:'image/product-25.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="199" data-id="p26" data-name="Gentle Matte Collagen Lipstick #10 Lobster" data-image="image/product-26.png">
+          <div class="product-img"><a href="product.html?id=p26"><img src="image/product-26.png" alt="Gentle Matte Collagen Lipstick #10 Lobster" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Gentle Matte Collagen Lipstick #10 Lobster" data-name-en="Gentle Matte Collagen Lipstick #10 Lobster"><a href="product.html?id=p26" style="color:inherit;">Gentle Matte Collagen Lipstick #10 Lobster</a></h3>
+            <p data-desc-th="ลิปแมทคอลลาเจน สีนู้ดน้ำตาลอมส้ม #10 Lobster" data-desc-en="Matte collagen lipstick in nude-brown #10 Lobster.">ลิปแมทคอลลาเจน สีนู้ดน้ำตาลอมส้ม #10 Lobster</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p26',name:'Gentle Matte Collagen Lipstick #10 Lobster',price:199,image:'image/product-26.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="329" data-id="p27" data-name="Maybelline Superstay Teddy Tint – Coral" data-image="image/product-27.jpg">
+          <div class="product-img"><a href="product.html?id=p27"><img src="image/product-27.jpg" alt="Maybelline Superstay Teddy Tint – Coral" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Maybelline Superstay Teddy Tint – Coral" data-name-en="Maybelline Superstay Teddy Tint – Coral"><a href="product.html?id=p27" style="color:inherit;">Maybelline Superstay Teddy Tint – Coral</a></h3>
+            <p data-desc-th="ลิปทินท์แมทสีคอรัลอุ่น ติดทน นุ่มริมฝีปาก" data-desc-en="Warm coral soft-matte teddy tint, long-lasting.">ลิปทินท์แมทสีคอรัลอุ่น ติดทน นุ่มริมฝีปาก</p>
+            <div class="product-meta">
+              <span class="product-price">฿329</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p27',name:'Maybelline Superstay Teddy Tint – Coral',price:329,image:'image/product-27.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="149" data-id="p28" data-name="Hya Tinted Lip Balm Set" data-image="image/product-28.jpg">
+          <div class="product-img"><a href="product.html?id=p28"><img src="image/product-28.jpg" alt="Hya Tinted Lip Balm Set" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Hya Tinted Lip Balm Set" data-name-en="Hya Tinted Lip Balm Set"><a href="product.html?id=p28" style="color:inherit;">Hya Tinted Lip Balm Set</a></h3>
+            <p data-desc-th="ลิปบาล์มทินท์ไฮยา มีหลายสี Peach / Watermelon / Apple บำรุงปาก" data-desc-en="Hya tinted lip balm multi-shade set for soft tinted lips.">ลิปบาล์มทินท์ไฮยา มีหลายสี Peach / Watermelon / Apple บำรุงปาก</p>
+            <div class="product-meta">
+              <span class="product-price">฿149</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p28',name:'Hya Tinted Lip Balm Set',price:149,image:'image/product-28.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="1290" data-id="p29" data-name="Shiseido Lipstick – Plum Shimmer" data-image="image/product-29.jpg">
+          <div class="product-img"><a href="product.html?id=p29"><img src="image/product-29.jpg" alt="Shiseido Lipstick – Plum Shimmer" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Shiseido Lipstick – Plum Shimmer" data-name-en="Shiseido Lipstick – Plum Shimmer"><a href="product.html?id=p29" style="color:inherit;">Shiseido Lipstick – Plum Shimmer</a></h3>
+            <p data-desc-th="ลิปสติกชิเซโด้ สีม่วงพลัมมีชิมเมอร์ ลุคหรูหรา" data-desc-en="Shiseido plum shimmer lipstick for an elegant look.">ลิปสติกชิเซโด้ สีม่วงพลัมมีชิมเมอร์ ลุคหรูหรา</p>
+            <div class="product-meta">
+              <span class="product-price">฿1,290</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p29',name:'Shiseido Lipstick – Plum Shimmer',price:1290,image:'image/product-29.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="lipstick" data-price="129" data-id="p30" data-name="Hya Lip Balm – Rose" data-image="image/product-30.jpg">
+          <div class="product-img"><a href="product.html?id=p30"><img src="image/product-30.jpg" alt="Hya Lip Balm – Rose" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">ลิปสติก</span>
+            <h3 data-name-th="Hya Lip Balm – Rose" data-name-en="Hya Lip Balm – Rose"><a href="product.html?id=p30" style="color:inherit;">Hya Lip Balm – Rose</a></h3>
+            <p data-desc-th="ลิปบาล์มไฮยา สีโรส บำรุงปากนุ่ม ชุ่มชื้น ด้วย Vitamin E" data-desc-en="Rose Hya lip balm with Vitamin E for soft hydrated lips.">ลิปบาล์มไฮยา สีโรส บำรุงปากนุ่ม ชุ่มชื้น ด้วย Vitamin E</p>
+            <div class="product-meta">
+              <span class="product-price">฿129</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p30',name:'Hya Lip Balm – Rose',price:129,image:'image/product-30.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="1590" data-id="p31" data-name="Bobbi Brown Pot Rouge – Coral" data-image="image/product-31.jpg">
+          <div class="product-img"><a href="product.html?id=p31"><img src="image/product-31.jpg" alt="Bobbi Brown Pot Rouge – Coral" />
+            <span class="product-badge">พรีเมียม</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="Bobbi Brown Pot Rouge – Coral" data-name-en="Bobbi Brown Pot Rouge – Coral"><a href="product.html?id=p31" style="color:inherit;">Bobbi Brown Pot Rouge – Coral</a></h3>
+            <p data-desc-th="บลัชครีมบ็อบบี้ บราวน์ โทนคอรัล เนื้อเนียนเกลี่ยง่าย" data-desc-en="Bobbi Brown cream pot rouge in coral, blendable.">บลัชครีมบ็อบบี้ บราวน์ โทนคอรัล เนื้อเนียนเกลี่ยง่าย</p>
+            <div class="product-meta">
+              <span class="product-price">฿1,590</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p31',name:'Bobbi Brown Pot Rouge – Coral',price:1590,image:'image/product-31.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="1590" data-id="p32" data-name="Bobbi Brown Pot Rouge – Pink" data-image="image/product-32.jpg">
+          <div class="product-img"><a href="product.html?id=p32"><img src="image/product-32.jpg" alt="Bobbi Brown Pot Rouge – Pink" />
+            <span class="product-badge">พรีเมียม</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="Bobbi Brown Pot Rouge – Pink" data-name-en="Bobbi Brown Pot Rouge – Pink"><a href="product.html?id=p32" style="color:inherit;">Bobbi Brown Pot Rouge – Pink</a></h3>
+            <p data-desc-th="บลัชครีมโทนชมพู จาก Bobbi Brown ให้แก้มดูมีชีวิตชีวา" data-desc-en="Bobbi Brown cream blush in vibrant pink.">บลัชครีมโทนชมพู จาก Bobbi Brown ให้แก้มดูมีชีวิตชีวา</p>
+            <div class="product-meta">
+              <span class="product-price">฿1,590</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p32',name:'Bobbi Brown Pot Rouge – Pink',price:1590,image:'image/product-32.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="690" data-id="p33" data-name="The Body Shop Blush Palette" data-image="image/product-33.jpg">
+          <div class="product-img"><a href="product.html?id=p33"><img src="image/product-33.jpg" alt="The Body Shop Blush Palette" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="The Body Shop Blush Palette" data-name-en="The Body Shop Blush Palette"><a href="product.html?id=p33" style="color:inherit;">The Body Shop Blush Palette</a></h3>
+            <p data-desc-th="พาเลทบลัช 3 โทน ชมพู-พีช เกลี่ยได้หลายลุค" data-desc-en="3-tone blush palette in pink-peach shades.">พาเลทบลัช 3 โทน ชมพู-พีช เกลี่ยได้หลายลุค</p>
+            <div class="product-meta">
+              <span class="product-price">฿690</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p33',name:'The Body Shop Blush Palette',price:690,image:'image/product-33.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="2100" data-id="p34" data-name="Dior Rouge Blush – Soft Pink" data-image="image/product-34.jpg">
+          <div class="product-img"><a href="product.html?id=p34"><img src="image/product-34.jpg" alt="Dior Rouge Blush – Soft Pink" />
+            <span class="product-badge">พรีเมียม</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="Dior Rouge Blush – Soft Pink" data-name-en="Dior Rouge Blush – Soft Pink"><a href="product.html?id=p34" style="color:inherit;">Dior Rouge Blush – Soft Pink</a></h3>
+            <p data-desc-th="บลัชดิออร์ สีชมพูอ่อนมีชิมเมอร์ พร้อมแปรงในตลับ" data-desc-en="Dior soft pink shimmer blush with built-in brush.">บลัชดิออร์ สีชมพูอ่อนมีชิมเมอร์ พร้อมแปรงในตลับ</p>
+            <div class="product-meta">
+              <span class="product-price">฿2,100</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p34',name:'Dior Rouge Blush – Soft Pink',price:2100,image:'image/product-34.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="299" data-id="p35" data-name="KMA Dual Blush – Purple & Magenta" data-image="image/product-35.jpg">
+          <div class="product-img"><a href="product.html?id=p35"><img src="image/product-35.jpg" alt="KMA Dual Blush – Purple & Magenta" />
+            <span class="product-badge">ใหม่</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="KMA Dual Blush – Purple & Magenta" data-name-en="KMA Dual Blush – Purple & Magenta"><a href="product.html?id=p35" style="color:inherit;">KMA Dual Blush – Purple & Magenta</a></h3>
+            <p data-desc-th="บลัชคู่ KMA โทนม่วงและมาเจนต้า ลุคสดใส" data-desc-en="KMA dual blush in purple and magenta.">บลัชคู่ KMA โทนม่วงและมาเจนต้า ลุคสดใส</p>
+            <div class="product-meta">
+              <span class="product-price">฿299</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p35',name:'KMA Dual Blush – Purple & Magenta',price:299,image:'image/product-35.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="159" data-id="p36" data-name="Soft Round Blush – Coral Pink" data-image="image/product-36.jpg">
+          <div class="product-img"><a href="product.html?id=p36"><img src="image/product-36.jpg" alt="Soft Round Blush – Coral Pink" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="Soft Round Blush – Coral Pink" data-name-en="Soft Round Blush – Coral Pink"><a href="product.html?id=p36" style="color:inherit;">Soft Round Blush – Coral Pink</a></h3>
+            <p data-desc-th="บลัชออนตลับกลม สีชมพูคอรัล เนื้อเนียนเกลี่ยง่าย" data-desc-en="Round compact coral-pink blush, easy to blend.">บลัชออนตลับกลม สีชมพูคอรัล เนื้อเนียนเกลี่ยง่าย</p>
+            <div class="product-meta">
+              <span class="product-price">฿159</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p36',name:'Soft Round Blush – Coral Pink',price:159,image:'image/product-36.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="249" data-id="p37" data-name="KMA Blush Bomb Cheek Color" data-image="image/product-37.jpg">
+          <div class="product-img"><a href="product.html?id=p37"><img src="image/product-37.jpg" alt="KMA Blush Bomb Cheek Color" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="KMA Blush Bomb Cheek Color" data-name-en="KMA Blush Bomb Cheek Color"><a href="product.html?id=p37" style="color:inherit;">KMA Blush Bomb Cheek Color</a></h3>
+            <p data-desc-th="บลัชบอมบ์ KMA สีคอรัลอุ่น เนื้อแน่นเม็ดสีชัด" data-desc-en="KMA Blush Bomb in warm coral, highly pigmented.">บลัชบอมบ์ KMA สีคอรัลอุ่น เนื้อแน่นเม็ดสีชัด</p>
+            <div class="product-meta">
+              <span class="product-price">฿249</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p37',name:'KMA Blush Bomb Cheek Color',price:249,image:'image/product-37.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="159" data-id="p38" data-name="Soft Round Blush – Nude Peach" data-image="image/product-38.jpg">
+          <div class="product-img"><a href="product.html?id=p38"><img src="image/product-38.jpg" alt="Soft Round Blush – Nude Peach" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="Soft Round Blush – Nude Peach" data-name-en="Soft Round Blush – Nude Peach"><a href="product.html?id=p38" style="color:inherit;">Soft Round Blush – Nude Peach</a></h3>
+            <p data-desc-th="บลัชออนโทนพีชนู้ด ตลับกลม ลุคธรรมชาติ" data-desc-en="Nude peach round blush for a natural flush.">บลัชออนโทนพีชนู้ด ตลับกลม ลุคธรรมชาติ</p>
+            <div class="product-meta">
+              <span class="product-price">฿159</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p38',name:'Soft Round Blush – Nude Peach',price:159,image:'image/product-38.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="blush" data-price="189" data-id="p39" data-name="Lovely Cookie Blusher – Coral" data-image="image/product-39.jpg">
+          <div class="product-img"><a href="product.html?id=p39"><img src="image/product-39.jpg" alt="Lovely Cookie Blusher – Coral" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">บลัชออน</span>
+            <h3 data-name-th="Lovely Cookie Blusher – Coral" data-name-en="Lovely Cookie Blusher – Coral"><a href="product.html?id=p39" style="color:inherit;">Lovely Cookie Blusher – Coral</a></h3>
+            <p data-desc-th="บลัชคุ๊กกี้ สีคอรัลสด พร้อมพัฟขนนุ่มในชุด" data-desc-en="Cookie blusher in bright coral with soft puff.">บลัชคุ๊กกี้ สีคอรัลสด พร้อมพัฟขนนุ่มในชุด</p>
+            <div class="product-meta">
+              <span class="product-price">฿189</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p39',name:'Lovely Cookie Blusher – Coral',price:189,image:'image/product-39.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="199" data-id="p40" data-name="Classic Compact Powder – Beige" data-image="image/product-40.jpg">
+          <div class="product-img"><a href="product.html?id=p40"><img src="image/product-40.jpg" alt="Classic Compact Powder – Beige" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Classic Compact Powder – Beige" data-name-en="Classic Compact Powder – Beige"><a href="product.html?id=p40" style="color:inherit;">Classic Compact Powder – Beige</a></h3>
+            <p data-desc-th="แป้งพัฟโทนเบจ คุมมัน มีกระจกในตลับ" data-desc-en="Beige oil-control compact powder with mirror.">แป้งพัฟโทนเบจ คุมมัน มีกระจกในตลับ</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p40',name:'Classic Compact Powder – Beige',price:199,image:'image/product-40.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="890" data-id="p41" data-name="Kanebo Pressed Powder – Translucent" data-image="image/product-41.jpg">
+          <div class="product-img"><a href="product.html?id=p41"><img src="image/product-41.jpg" alt="Kanebo Pressed Powder – Translucent" />
+            <span class="product-badge">แนะนำ</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Kanebo Pressed Powder – Translucent" data-name-en="Kanebo Pressed Powder – Translucent"><a href="product.html?id=p41" style="color:inherit;">Kanebo Pressed Powder – Translucent</a></h3>
+            <p data-desc-th="แป้งคัทซีลโปร่งแสง Kanebo เนื้อบางเบา คุมมัน" data-desc-en="Kanebo translucent pressed powder, lightweight oil control.">แป้งคัทซีลโปร่งแสง Kanebo เนื้อบางเบา คุมมัน</p>
+            <div class="product-meta">
+              <span class="product-price">฿890</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p41',name:'Kanebo Pressed Powder – Translucent',price:890,image:'image/product-41.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="299" data-id="p42" data-name="Sivanna Super Cover Foundation Powder SPF30" data-image="image/product-42.jpg">
+          <div class="product-img"><a href="product.html?id=p42"><img src="image/product-42.jpg" alt="Sivanna Super Cover Foundation Powder SPF30" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Sivanna Super Cover Foundation Powder SPF30" data-name-en="Sivanna Super Cover Foundation Powder SPF30"><a href="product.html?id=p42" style="color:inherit;">Sivanna Super Cover Foundation Powder SPF30</a></h3>
+            <p data-desc-th="แป้งผสมรองพื้น Sivanna ปกปิด คุมมัน SPF30 PA+++" data-desc-en="Sivanna foundation powder SPF30 PA+++, full coverage.">แป้งผสมรองพื้น Sivanna ปกปิด คุมมัน SPF30 PA+++</p>
+            <div class="product-meta">
+              <span class="product-price">฿299</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p42',name:'Sivanna Super Cover Foundation Powder SPF30',price:299,image:'image/product-42.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="279" data-id="p43" data-name="Sivanna Super Cover Two Way Cake NO.02" data-image="image/product-43.png">
+          <div class="product-img"><a href="product.html?id=p43"><img src="image/product-43.png" alt="Sivanna Super Cover Two Way Cake NO.02" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Sivanna Super Cover Two Way Cake NO.02" data-name-en="Sivanna Super Cover Two Way Cake NO.02"><a href="product.html?id=p43" style="color:inherit;">Sivanna Super Cover Two Way Cake NO.02</a></h3>
+            <p data-desc-th="แป้งทูเวย์เค้ก Sivanna เบอร์ 02 ปกปิดเนียน" data-desc-en="Sivanna two-way cake shade 02, smooth coverage.">แป้งทูเวย์เค้ก Sivanna เบอร์ 02 ปกปิดเนียน</p>
+            <div class="product-meta">
+              <span class="product-price">฿279</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p43',name:'Sivanna Super Cover Two Way Cake NO.02',price:279,image:'image/product-43.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="149" data-id="p44" data-name="Bhaesaj Compact Powder – Natural" data-image="image/product-44.jpg">
+          <div class="product-img"><a href="product.html?id=p44"><img src="image/product-44.jpg" alt="Bhaesaj Compact Powder – Natural" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Bhaesaj Compact Powder – Natural" data-name-en="Bhaesaj Compact Powder – Natural"><a href="product.html?id=p44" style="color:inherit;">Bhaesaj Compact Powder – Natural</a></h3>
+            <p data-desc-th="แป้งพัฟเภสัช โทนธรรมชาติ คุมมัน ราคาคุ้ม" data-desc-en="Bhaesaj natural tone compact, oil control, great value.">แป้งพัฟเภสัช โทนธรรมชาติ คุมมัน ราคาคุ้ม</p>
+            <div class="product-meta">
+              <span class="product-price">฿149</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p44',name:'Bhaesaj Compact Powder – Natural',price:149,image:'image/product-44.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="powder" data-price="890" data-id="p45" data-name="Kanebo Pressed Powder No.01" data-image="image/product-45.jpg">
+          <div class="product-img"><a href="product.html?id=p45"><img src="image/product-45.jpg" alt="Kanebo Pressed Powder No.01" />
+            <span class="product-badge">แนะนำ</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">แป้ง & คุชชั่น</span>
+            <h3 data-name-th="Kanebo Pressed Powder No.01" data-name-en="Kanebo Pressed Powder No.01"><a href="product.html?id=p45" style="color:inherit;">Kanebo Pressed Powder No.01</a></h3>
+            <p data-desc-th="แป้งคัทซีล Kanebo เบอร์ 01 โปร่งใส คุมมัน 24 ชม." data-desc-en="Kanebo No.01 translucent powder, 24h oil control.">แป้งคัทซีล Kanebo เบอร์ 01 โปร่งใส คุมมัน 24 ชม.</p>
+            <div class="product-meta">
+              <span class="product-price">฿890</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p45',name:'Kanebo Pressed Powder No.01',price:890,image:'image/product-45.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="199" data-id="p46" data-name="Browit Pro Makeup Flat Eyebrow Pencil 2IN1" data-image="image/product-46.jpg">
+          <div class="product-img"><a href="product.html?id=p46"><img src="image/product-46.jpg" alt="Browit Pro Makeup Flat Eyebrow Pencil 2IN1" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="Browit Pro Makeup Flat Eyebrow Pencil 2IN1" data-name-en="Browit Pro Makeup Flat Eyebrow Pencil 2IN1"><a href="product.html?id=p46" style="color:inherit;">Browit Pro Makeup Flat Eyebrow Pencil 2IN1</a></h3>
+            <p data-desc-th="ดินสอเขียนคิ้วหัวแบน 2IN1 มีแปรงปัดคิ้ว สี Sandstone Brown" data-desc-en="Flat 2-in-1 brow pencil with brush, Sandstone Brown.">ดินสอเขียนคิ้วหัวแบน 2IN1 มีแปรงปัดคิ้ว สี Sandstone Brown</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p46',name:'Browit Pro Makeup Flat Eyebrow Pencil 2IN1',price:199,image:'image/product-46.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="249" data-id="p47" data-name="Browit Ultra Fine Duo Brow Pencil & Mascara" data-image="image/product-47.jpg">
+          <div class="product-img"><a href="product.html?id=p47"><img src="image/product-47.jpg" alt="Browit Ultra Fine Duo Brow Pencil & Mascara" />
+            <span class="product-badge">ใหม่</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="Browit Ultra Fine Duo Brow Pencil & Mascara" data-name-en="Browit Ultra Fine Duo Brow Pencil & Mascara"><a href="product.html?id=p47" style="color:inherit;">Browit Ultra Fine Duo Brow Pencil & Mascara</a></h3>
+            <p data-desc-th="ดินสอคิ้วหัวเล็กพิเศษ + มาสคาร่าคิ้ว ติดทน 24 ชม." data-desc-en="Ultra-fine brow pencil duo with mascara, 24h wear.">ดินสอคิ้วหัวเล็กพิเศษ + มาสคาร่าคิ้ว ติดทน 24 ชม.</p>
+            <div class="product-meta">
+              <span class="product-price">฿249</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p47',name:'Browit Ultra Fine Duo Brow Pencil & Mascara',price:249,image:'image/product-47.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="179" data-id="p48" data-name="beWiLD Perfectionist Eyebrow #03 Mocha" data-image="image/product-48.jpg">
+          <div class="product-img"><a href="product.html?id=p48"><img src="image/product-48.jpg" alt="beWiLD Perfectionist Eyebrow #03 Mocha" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="beWiLD Perfectionist Eyebrow #03 Mocha" data-name-en="beWiLD Perfectionist Eyebrow #03 Mocha"><a href="product.html?id=p48" style="color:inherit;">beWiLD Perfectionist Eyebrow #03 Mocha</a></h3>
+            <p data-desc-th="ดินสอเขียนคิ้ว beWiLD สี Mocha คิ้วปัง สั่งได้ กันน้ำ" data-desc-en="beWiLD brow pencil #03 Mocha, waterproof, natural look.">ดินสอเขียนคิ้ว beWiLD สี Mocha คิ้วปัง สั่งได้ กันน้ำ</p>
+            <div class="product-meta">
+              <span class="product-price">฿179</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p48',name:'beWiLD Perfectionist Eyebrow #03 Mocha',price:179,image:'image/product-48.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="179" data-id="p49" data-name="beWiLD Perfectionist Eyebrow Pencil 2IN1" data-image="image/product-49.jpg">
+          <div class="product-img"><a href="product.html?id=p49"><img src="image/product-49.jpg" alt="beWiLD Perfectionist Eyebrow Pencil 2IN1" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="beWiLD Perfectionist Eyebrow Pencil 2IN1" data-name-en="beWiLD Perfectionist Eyebrow Pencil 2IN1"><a href="product.html?id=p49" style="color:inherit;">beWiLD Perfectionist Eyebrow Pencil 2IN1</a></h3>
+            <p data-desc-th="ดินสอคิ้ว 2IN1 หัวดินสอ + แปรง กันน้ำ กันเหงื่อ" data-desc-en="2-in-1 brow pencil with spoolie, water and sweat resistant.">ดินสอคิ้ว 2IN1 หัวดินสอ + แปรง กันน้ำ กันเหงื่อ</p>
+            <div class="product-meta">
+              <span class="product-price">฿179</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p49',name:'beWiLD Perfectionist Eyebrow Pencil 2IN1',price:179,image:'image/product-49.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="259" data-id="p50" data-name="Kathy 3B Brow Superstar" data-image="image/product-50.jpg">
+          <div class="product-img"><a href="product.html?id=p50"><img src="image/product-50.jpg" alt="Kathy 3B Brow Superstar" />
+            <span class="product-badge">แนะนำ</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="Kathy 3B Brow Superstar" data-name-en="Kathy 3B Brow Superstar"><a href="product.html?id=p50" style="color:inherit;">Kathy 3B Brow Superstar</a></h3>
+            <p data-desc-th="ดินสอเขียนคิ้ว 3 หัว Kathy ดินสอ + มาสคาร่า + หัวฟองน้ำ" data-desc-en="Kathy 3-in-1 brow: pencil, mascara and sponge tip.">ดินสอเขียนคิ้ว 3 หัว Kathy ดินสอ + มาสคาร่า + หัวฟองน้ำ</p>
+            <div class="product-meta">
+              <span class="product-price">฿259</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p50',name:'Kathy 3B Brow Superstar',price:259,image:'image/product-50.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="159" data-id="p51" data-name="USTAR Slim Brow & Liner 2IN1" data-image="image/product-51.jpg">
+          <div class="product-img"><a href="product.html?id=p51"><img src="image/product-51.jpg" alt="USTAR Slim Brow & Liner 2IN1" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="USTAR Slim Brow & Liner 2IN1" data-name-en="USTAR Slim Brow & Liner 2IN1"><a href="product.html?id=p51" style="color:inherit;">USTAR Slim Brow & Liner 2IN1</a></h3>
+            <p data-desc-th="ดินสอคิ้วและอายไลเนอร์ 2IN1 หัวเรียว กันน้ำ" data-desc-en="2-in-1 slim brow and liner, waterproof.">ดินสอคิ้วและอายไลเนอร์ 2IN1 หัวเรียว กันน้ำ</p>
+            <div class="product-meta">
+              <span class="product-price">฿159</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p51',name:'USTAR Slim Brow & Liner 2IN1',price:159,image:'image/product-51.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="259" data-id="p52" data-name="Kathy 3B Brow – Detail Pack" data-image="image/product-52.jpg">
+          <div class="product-img"><a href="product.html?id=p52"><img src="image/product-52.jpg" alt="Kathy 3B Brow – Detail Pack" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="Kathy 3B Brow – Detail Pack" data-name-en="Kathy 3B Brow – Detail Pack"><a href="product.html?id=p52" style="color:inherit;">Kathy 3B Brow – Detail Pack</a></h3>
+            <p data-desc-th="Kathy 3B Brow ชุดละเอียด ดินสอคิ้วซุปตาร์ 3 ฟังก์ชัน" data-desc-en="Kathy 3B Brow detail set with triple brow functions.">Kathy 3B Brow ชุดละเอียด ดินสอคิ้วซุปตาร์ 3 ฟังก์ชัน</p>
+            <div class="product-meta">
+              <span class="product-price">฿259</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p52',name:'Kathy 3B Brow – Detail Pack',price:259,image:'image/product-52.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="159" data-id="p53" data-name="USTAR Slim Brow & Liner Natural Brown" data-image="image/product-53.jpg">
+          <div class="product-img"><a href="product.html?id=p53"><img src="image/product-53.jpg" alt="USTAR Slim Brow & Liner Natural Brown" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="USTAR Slim Brow & Liner Natural Brown" data-name-en="USTAR Slim Brow & Liner Natural Brown"><a href="product.html?id=p53" style="color:inherit;">USTAR Slim Brow & Liner Natural Brown</a></h3>
+            <p data-desc-th="USTAR Slim Brow สี Natural Brown คิ้วคม มาเป็นคู่ไลเนอร์" data-desc-en="USTAR slim brow in Natural Brown with liner tip.">USTAR Slim Brow สี Natural Brown คิ้วคม มาเป็นคู่ไลเนอร์</p>
+            <div class="product-meta">
+              <span class="product-price">฿159</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p53',name:'USTAR Slim Brow & Liner Natural Brown',price:159,image:'image/product-53.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="390" data-id="p54" data-name="KATE Tokyo Eyebrow Pencil Z – Black" data-image="image/product-54.png">
+          <div class="product-img"><a href="product.html?id=p54"><img src="image/product-54.png" alt="KATE Tokyo Eyebrow Pencil Z – Black" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="KATE Tokyo Eyebrow Pencil Z – Black" data-name-en="KATE Tokyo Eyebrow Pencil Z – Black"><a href="product.html?id=p54" style="color:inherit;">KATE Tokyo Eyebrow Pencil Z – Black</a></h3>
+            <p data-desc-th="ดินสอเขียนคิ้ว KATE หัวเล็กพิเศษ สีดำ เขียนเส้นขนคิ้วได้ละเอียด" data-desc-en="KATE ultra-fine black brow pencil for hair-like strokes.">ดินสอเขียนคิ้ว KATE หัวเล็กพิเศษ สีดำ เขียนเส้นขนคิ้วได้ละเอียด</p>
+            <div class="product-meta">
+              <span class="product-price">฿390</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p54',name:'KATE Tokyo Eyebrow Pencil Z – Black',price:390,image:'image/product-54.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="249" data-id="p55" data-name="Browit Forever Pro Eyeliner – Deep Black" data-image="image/product-55.jpg">
+          <div class="product-img"><a href="product.html?id=p55"><img src="image/product-55.jpg" alt="Browit Forever Pro Eyeliner – Deep Black" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="Browit Forever Pro Eyeliner – Deep Black" data-name-en="Browit Forever Pro Eyeliner – Deep Black"><a href="product.html?id=p55" style="color:inherit;">Browit Forever Pro Eyeliner – Deep Black</a></h3>
+            <p data-desc-th="อายไลเนอร์หัวสักหลาด 0.1 มม. สีดำสนิท กันน้ำ แห้งเร็ว" data-desc-en="0.1mm felt-tip eyeliner deep black, waterproof, quick-dry.">อายไลเนอร์หัวสักหลาด 0.1 มม. สีดำสนิท กันน้ำ แห้งเร็ว</p>
+            <div class="product-meta">
+              <span class="product-price">฿249</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p55',name:'Browit Forever Pro Eyeliner – Deep Black',price:249,image:'image/product-55.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="390" data-id="p56" data-name="KATE Tokyo Eyebrow Pencil Z – Light Brown" data-image="image/product-56.png">
+          <div class="product-img"><a href="product.html?id=p56"><img src="image/product-56.png" alt="KATE Tokyo Eyebrow Pencil Z – Light Brown" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="KATE Tokyo Eyebrow Pencil Z – Light Brown" data-name-en="KATE Tokyo Eyebrow Pencil Z – Light Brown"><a href="product.html?id=p56" style="color:inherit;">KATE Tokyo Eyebrow Pencil Z – Light Brown</a></h3>
+            <p data-desc-th="ดินสอคิ้ว KATE สีน้ำตาลอ่อน หัวเล็ก เขียนเส้นธรรมชาติ" data-desc-en="KATE light brown ultra-fine brow pencil.">ดินสอคิ้ว KATE สีน้ำตาลอ่อน หัวเล็ก เขียนเส้นธรรมชาติ</p>
+            <div class="product-meta">
+              <span class="product-price">฿390</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p56',name:'KATE Tokyo Eyebrow Pencil Z – Light Brown',price:390,image:'image/product-56.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="415" data-id="p57" data-name="beneficial Proliner Eyeliner" data-image="image/product-57.jpg">
+          <div class="product-img"><a href="product.html?id=p57"><img src="image/product-57.jpg" alt="beneficial Proliner Eyeliner" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="beneficial Proliner Eyeliner" data-name-en="beneficial Proliner Eyeliner"><a href="product.html?id=p57" style="color:inherit;">beneficial Proliner Eyeliner</a></h3>
+            <p data-desc-th="อายไลเนอร์เนื้อลิควิด สีดำสนิท ขนแปรงเรียว Made in Japan" data-desc-en="Liquid black eyeliner with fine brush, made in Japan.">อายไลเนอร์เนื้อลิควิด สีดำสนิท ขนแปรงเรียว Made in Japan</p>
+            <div class="product-meta">
+              <span class="product-price">฿415</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p57',name:'beneficial Proliner Eyeliner',price:415,image:'image/product-57.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="249" data-id="p58" data-name="Browit Forever Pro Eyeliner Soft Felt Tip" data-image="image/product-58.jpg">
+          <div class="product-img"><a href="product.html?id=p58"><img src="image/product-58.jpg" alt="Browit Forever Pro Eyeliner Soft Felt Tip" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="Browit Forever Pro Eyeliner Soft Felt Tip" data-name-en="Browit Forever Pro Eyeliner Soft Felt Tip"><a href="product.html?id=p58" style="color:inherit;">Browit Forever Pro Eyeliner Soft Felt Tip</a></h3>
+            <p data-desc-th="อายไลเนอร์หัวสักหลาดนุ่ม เส้นคม กันน้ำ จากญี่ปุ่น" data-desc-en="Soft felt-tip waterproof eyeliner with Japanese ink.">อายไลเนอร์หัวสักหลาดนุ่ม เส้นคม กันน้ำ จากญี่ปุ่น</p>
+            <div class="product-meta">
+              <span class="product-price">฿249</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p58',name:'Browit Forever Pro Eyeliner Soft Felt Tip',price:249,image:'image/product-58.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyebrow" data-price="390" data-id="p59" data-name="KATE Eyebrow Pencil Z BR-1" data-image="image/product-59.png">
+          <div class="product-img"><a href="product.html?id=p59"><img src="image/product-59.png" alt="KATE Eyebrow Pencil Z BR-1" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">เขียนคิ้ว</span>
+            <h3 data-name-th="KATE Eyebrow Pencil Z BR-1" data-name-en="KATE Eyebrow Pencil Z BR-1"><a href="product.html?id=p59" style="color:inherit;">KATE Eyebrow Pencil Z BR-1</a></h3>
+            <p data-desc-th="ดินสอคิ้ว KATE เบอร์ BR-1 น้ำตาลอ่อน เขียนเส้นขนคิ้ว" data-desc-en="KATE BR-1 light brown hair-stroke brow pencil.">ดินสอคิ้ว KATE เบอร์ BR-1 น้ำตาลอ่อน เขียนเส้นขนคิ้ว</p>
+            <div class="product-meta">
+              <span class="product-price">฿390</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p59',name:'KATE Eyebrow Pencil Z BR-1',price:390,image:'image/product-59.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="415" data-id="p60" data-name="beneficial Proliner – Soft Brush" data-image="image/product-60.jpg">
+          <div class="product-img"><a href="product.html?id=p60"><img src="image/product-60.jpg" alt="beneficial Proliner – Soft Brush" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="beneficial Proliner – Soft Brush" data-name-en="beneficial Proliner – Soft Brush"><a href="product.html?id=p60" style="color:inherit;">beneficial Proliner – Soft Brush</a></h3>
+            <p data-desc-th="อายไลเนอร์ beneficial หัวแปรงนุ่ม เขียนหางตาคม" data-desc-en="beneficial soft-brush eyeliner for sharp wing lines.">อายไลเนอร์ beneficial หัวแปรงนุ่ม เขียนหางตาคม</p>
+            <div class="product-meta">
+              <span class="product-price">฿415</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p60',name:'beneficial Proliner – Soft Brush',price:415,image:'image/product-60.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="129" data-id="p61" data-name="Mistine Super Black Eyeliner" data-image="image/product-61.jpg">
+          <div class="product-img"><a href="product.html?id=p61"><img src="image/product-61.jpg" alt="Mistine Super Black Eyeliner" />
+            <span class="product-badge">ขายดี</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="Mistine Super Black Eyeliner" data-name-en="Mistine Super Black Eyeliner"><a href="product.html?id=p61" style="color:inherit;">Mistine Super Black Eyeliner</a></h3>
+            <p data-desc-th="อายไลเนอร์มิสทีน สีดำเข้ม เขียนง่าย ราคาคุ้ม" data-desc-en="Mistine super black eyeliner, easy application.">อายไลเนอร์มิสทีน สีดำเข้ม เขียนง่าย ราคาคุ้ม</p>
+            <div class="product-meta">
+              <span class="product-price">฿129</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p61',name:'Mistine Super Black Eyeliner',price:129,image:'image/product-61.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="399" data-id="p62" data-name="beneficial Liquid Eyeliner Pen" data-image="image/product-62.jpg">
+          <div class="product-img"><a href="product.html?id=p62"><img src="image/product-62.jpg" alt="beneficial Liquid Eyeliner Pen" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="beneficial Liquid Eyeliner Pen" data-name-en="beneficial Liquid Eyeliner Pen"><a href="product.html?id=p62" style="color:inherit;">beneficial Liquid Eyeliner Pen</a></h3>
+            <p data-desc-th="อายไลเนอร์ปากกา beneficial หัวพู่กันคม สีดำสนิท" data-desc-en="beneficial liquid pen eyeliner with precise brush tip.">อายไลเนอร์ปากกา beneficial หัวพู่กันคม สีดำสนิท</p>
+            <div class="product-meta">
+              <span class="product-price">฿399</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p62',name:'beneficial Liquid Eyeliner Pen',price:399,image:'image/product-62.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-cat="eyeliner" data-price="249" data-id="p63" data-name="Browit Forever Pro Eyeliner – Deep Brown" data-image="image/product-63.png">
+          <div class="product-img"><a href="product.html?id=p63"><img src="image/product-63.png" alt="Browit Forever Pro Eyeliner – Deep Brown" />
+            
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3 data-name-th="Browit Forever Pro Eyeliner – Deep Brown" data-name-en="Browit Forever Pro Eyeliner – Deep Brown"><a href="product.html?id=p63" style="color:inherit;">Browit Forever Pro Eyeliner – Deep Brown</a></h3>
+            <p data-desc-th="อายไลเนอร์ Browit สีน้ำตาลเข้ม หัว 0.1 มม. กันน้ำ" data-desc-en="Browit deep brown 0.1mm felt-tip waterproof eyeliner.">อายไลเนอร์ Browit สีน้ำตาลเข้ม หัว 0.1 มม. กันน้ำ</p>
+            <div class="product-meta">
+              <span class="product-price">฿249</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart" data-i18n="add_cart"
+                onclick="addToCart({id:'p63',name:'Browit Forever Pro Eyeliner – Deep Brown',price:249,image:'image/product-63.png'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire" data-i18n="inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+      
+        <article class="product-card" data-cat="eyeliner" data-price="199" data-id="p64" data-name="Merrez'ca Super Black Long-Lasting Eyeliner" data-image="image/product-64.jpg">
+          <div class="product-img"><a href="product.html?id=p64"><img src="image/product-64.jpg" alt="Merrez'ca Super Black Long-Lasting Eyeliner" />
+            <span class="product-badge">แนะนำ</span>
+          </a></div>
+          <div class="product-body">
+            <span class="product-cat-tag">อายไลเนอร์</span>
+            <h3><a href="product.html?id=p64" style="color:inherit;">Merrez'ca Super Black Long-Lasting Eyeliner</a></h3>
+            <p>อายไลเนอร์ Merrez'ca สีดำเข้ม ติดทน กันน้ำ กันเหงื่อ</p>
+            <div class="product-meta">
+              <span class="product-price">฿199</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn-cart"
+                onclick="addToCart({id:'p64',name:'Merrez\'ca Super Black Long-Lasting Eyeliner',price:199,image:'image/product-64.jpg'})">ใส่ตะกร้า</button>
+              <a href="contact.html" class="btn-inquire">สอบถาม</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>สนใจสินค้าชิ้นไหนเป็นพิเศษ?</h2>
+      <p>ติดต่อเราเพื่อสอบถามรายละเอียด สต็อก หรือโปรโมชั่นพิเศษ</p>
+      <a href="contact.html" class="btn btn-primary">สอบถามสินค้า</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="image/logo.png" alt="Aura Beauty" class="logo-img" />
+          <strong style="color:#eee; font-family:'Playfair Display',serif; letter-spacing:0.1em;">AURA BEAUTY</strong>
+          <p>บริษัท ออร่า บิวตี้ จำกัด ผู้จำหน่ายเครื่องสำอางและสกินแคร์คุณภาพสูง ครบทุกประเภท</p>
+        </div>
+        <div class="footer-col">
+          <h4>เมนู</h4>
+          <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            <li><a href="products.html">สินค้า</a></li>
+            <li><a href="blog.html">บทความ</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>หมวดหมู่</h4>
+          <ul>
+            <li><a href="products.html">แปรงแต่งหน้า</a></li>
+            <li><a href="products.html">อายไลเนอร์</a></li>
+            <li><a href="products.html">รองพื้น</a></li>
+            <li><a href="products.html">บลัชออน</a></li>
+            <li><a href="products.html">แป้ง & คุชชั่น</a></li>
+            <li><a href="products.html">ลิปสติก</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>ติดตามเรา</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Line Official</a></li>
+            <li><a href="#">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 บริษัท ออร่า บิวตี้ จำกัด สงวนลิขสิทธิ์</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Line">L</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="stock.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
